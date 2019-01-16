@@ -18,6 +18,8 @@
 		78EC673121C7200B005EB320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC673021C7200B005EB320 /* LoginViewController.swift */; };
 		78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC673221C72028005EB320 /* SignUpViewController.swift */; };
 		78F723E421EF7EDF00505FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */; };
+		78F723E721EF926200505FB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723E621EF926200505FB5 /* User.swift */; };
+		78F723E921EF948E00505FB5 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723E821EF948E00505FB5 /* Review.swift */; };
 		AD8BD8F5BB0006D4483634A5 /* Pods_BurgeRate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92AB55DBB04490C4C344481 /* Pods_BurgeRate.framework */; };
 		B0B3F691EE2146D23EF51114 /* Pods_BurgeRateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37956B4F01F6C4C16DB2D92D /* Pods_BurgeRateTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		78EC673021C7200B005EB320 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78EC673221C72028005EB320 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78F723E621EF926200505FB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		78F723E821EF948E00505FB5 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		975872DAC2922E6E9C31B3D8 /* Pods_BurgeRateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurgeRateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4336A520F28A68B73ABD8E4 /* Pods-BurgeRateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRateUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRateUITests/Pods-BurgeRateUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D7B1B5065D5AA6BD061AEFB5 /* Pods-BurgeRate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRate/Pods-BurgeRate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		78EC670121C7022E005EB320 /* BurgeRate */ = {
 			isa = PBXGroup;
 			children = (
+				78F723E521EF914000505FB5 /* Models */,
 				78EC670221C7022E005EB320 /* AppDelegate.swift */,
 				78EC670421C7022E005EB320 /* EntryViewController.swift */,
 				78EC670621C7022E005EB320 /* Main.storyboard */,
@@ -172,6 +177,15 @@
 				78EC672421C70234005EB320 /* Info.plist */,
 			);
 			path = BurgeRateUITests;
+			sourceTree = "<group>";
+		};
+		78F723E521EF914000505FB5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				78F723E621EF926200505FB5 /* User.swift */,
+				78F723E821EF948E00505FB5 /* Review.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,7 +395,9 @@
 				78EC673121C7200B005EB320 /* LoginViewController.swift in Sources */,
 				78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */,
 				78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */,
+				78F723E721EF926200505FB5 /* User.swift in Sources */,
 				78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */,
+				78F723E921EF948E00505FB5 /* Review.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
