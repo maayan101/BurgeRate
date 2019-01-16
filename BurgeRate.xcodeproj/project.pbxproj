@@ -16,6 +16,7 @@
 		78EC672321C70234005EB320 /* BurgeRateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC672221C70234005EB320 /* BurgeRateUITests.swift */; };
 		78EC673121C7200B005EB320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC673021C7200B005EB320 /* LoginViewController.swift */; };
 		78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC673221C72028005EB320 /* SignUpViewController.swift */; };
+		78F723E421EF7EDF00505FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		78EC672421C70234005EB320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78EC673021C7200B005EB320 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78EC673221C72028005EB320 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				78EC670E21C70233005EB320 /* Info.plist */,
 				78EC673021C7200B005EB320 /* LoginViewController.swift */,
 				78EC673221C72028005EB320 /* SignUpViewController.swift */,
+				78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */,
 			);
 			path = BurgeRate;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78EC670D21C70233005EB320 /* LaunchScreen.storyboard in Resources */,
+				78F723E421EF7EDF00505FB5 /* GoogleService-Info.plist in Resources */,
 				78EC670A21C70233005EB320 /* Assets.xcassets in Resources */,
 				78EC670821C7022E005EB320 /* Main.storyboard in Resources */,
 			);
