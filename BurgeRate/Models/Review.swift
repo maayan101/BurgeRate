@@ -8,14 +8,14 @@
 
 import Foundation
 class Review{
-    let ID:String
+    let RevID:String
     let Restaurant:String
     let User:String
     let Rank:String
     let Caption:String
     
     init(_rest:String, _user:String, _rank:String, _caption:String, _id:String) {
-        ID = _id
+        RevID = _id
         Restaurant = _rest
         User = _user
         Rank = _rank

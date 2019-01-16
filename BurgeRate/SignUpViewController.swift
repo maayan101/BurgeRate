@@ -34,6 +34,18 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBOutlet weak var UserNameText: UITextField!
+    @IBOutlet weak var PasswordText: UITextField!
+    @IBOutlet weak var EmailText: UITextField!
+    @IBOutlet weak var GenderSeg: UISegmentedControl!
+    
+    @IBAction func SignUp(_ sender: UIButton) {
+        let user = User(_id: idTextBox.text!, _name: nameTextBox.text!)
+        Model.instance.addNewStudent(student: st)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func back(_ sender: UIButton) {
         if self.delegate != nil{
             self.delegate!.onComplete(success: true);
