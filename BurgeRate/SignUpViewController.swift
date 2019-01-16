@@ -41,7 +41,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var GenderSeg: UISegmentedControl!
     
     @IBAction func SignUp(_ sender: UIButton) {
-        let user = User(_id: idTextBox.text!, _name: nameTextBox.text!)
+        let user = User(_id: 1, _username: UserNameText.text!, _password: <#String#>, )
         Model.instance.addNewStudent(student: st)
         self.navigationController?.popViewController(animated: true)
     }

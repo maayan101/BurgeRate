@@ -15,7 +15,7 @@ class User{
     let Password:String
     let Gender:String
     
-    init(_email:String, _password:String, _gender:String, _username:String, _id:String) {
+    init( _id:String, _username:String, _password:String, _email:String, _gender:String ) {
         UserID = _id
         Email = _email
         Password = _password
