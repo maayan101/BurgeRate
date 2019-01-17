@@ -46,12 +46,12 @@ class Model {
         //return Student.get(database: modelSql!.database, byId: byId);
     }
     
-    func getAllReviewss(callback:@escaping ([Review])->Void){
-        ModelFirebase.getAllReviews(callback: callback);
+    func getAllReviews(callback:@escaping ([Review])->Void){
+        modelFirebase.getAllReviews(callback: callback);
     }
-    
+}
     class ModelNotification{
-        static let studentsListNotification = MyNotification<[Review]>("com.menachi.studentlist")
+        static let ReviewListNotification = MyNotification<[Review]>("com.menachi.studentlist")
         
         class MyNotification<T>{
             let name:String
@@ -86,5 +86,5 @@ class Model {
         
     }
 
-}
+
 

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class FeedTableViewController: UITableViewController {
     var data = [Review]()
     var ReviewListener:NSObjectProtocol?
@@ -16,13 +17,12 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ReviewListener = Model.ReviewListNotification.observe(){
+        ReviewListener = ModelNotification.ReviewListNotification.observe(){
             (data:Any) in
-            self.data = data as! [Student]
+            self.data = data as! [Review]
             self.tableView.reloadData()
         }
-        
-        Model.instance.getAllReviews()
+        Model.instance.getAllReviews(callback: <#T##([Review]) -> Void#>)
         
         //        Model.instance.signin(email: "eliav@temp.com", password: "1234567890") { (ret:Bool) in
         //            if (ret){
@@ -35,8 +35,8 @@ class FeedTableViewController: UITableViewController {
     }
     
     deinit{
-        if userListener != nil{
-            ModelNotification.usersListNotification.remove(observer: userListener!)
+        if ReviewListener != nil{
+            ModelNotification.ReviewListNotification.remove(observer: ReviewListener!)
         }
     }
     
@@ -64,9 +64,9 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:StudentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentTableViewCell
+        let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentTableViewCell
         
-        let st = data[indexPath.row]
+        let rv = data[indexPath.row]
         cell.nameLabel.text = st.name
         cell.idLabel.text = st.id
         cell.imageView?.image = UIImage(named: "avatar")
