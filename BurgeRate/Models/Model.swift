@@ -11,7 +11,7 @@ import Foundation
 class Model {
     static let instance:Model = Model()
     
-    let usersListNotification = ""
+    let reviewsListNotification = ""
     
     //var modelSql:ModelSql?
     var modelFirebase = ModelFirebase();
@@ -46,9 +46,16 @@ class Model {
         //return Student.get(database: modelSql!.database, byId: byId);
     }
     
-    func getAllReviews(callback:@escaping ([Review])->Void){
-        modelFirebase.getAllReviews(callback: callback);
+    
+    func getAllReviews() {
+        modelFirebase.getAllReviews(callback: {(data:[Review]) in
+            NotificationCenter.default.post(name: NSNotification.Name(self.reviewsListNotification),
+                                            object: self,
+                                            userInfo: ["data":data])
+            
+        })
     }
+    
 }
     class ModelNotification{
         static let ReviewListNotification = MyNotification<[Review]>("com.menachi.studentlist")

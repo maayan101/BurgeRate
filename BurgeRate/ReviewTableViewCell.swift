@@ -8,7 +8,9 @@
 
 import Foundation
 import UIKit
-class ReviewTableViewCellController : UITableViewCell
+class ReviewTableViewCell : UITableViewCell
 {
+    
+    
     
 }
