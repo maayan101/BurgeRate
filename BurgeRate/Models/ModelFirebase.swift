@@ -54,7 +54,7 @@ class ModelFirebase {
     }
     
     func addNewReview(review:Review){
-        ref.child("reviews").child(review.RevID).setValue(review.toJson())
+        //ref.child("reviews").child(review.RevID).setValue(review.toJson())
     }
     
     func getAllReviews(callback:@escaping ([Review])->Void){

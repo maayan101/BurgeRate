@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nac-Pf-NTD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="37v-Au-fpv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -297,15 +297,15 @@
         <scene sceneID="wgl-YW-Mla">
             <objects>
                 <tableViewController id="T2y-uG-TDV" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Cp-fb-6fF" customClass="FeedTableViewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Cp-fb-6fF" customClass="FeedTableViewController" customModule="BurgeRate" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="144" id="myR-af-JVj" customClass="ReviewTableViewController">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="144" id="myR-af-JVj" customClass="ReviewTableViewController" customModule="BurgeRate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="144"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="myR-af-JVj" id="tza-cQ-1nI">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ReviewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="myR-af-JVj" id="tza-cQ-1nI" customClass="ReviewTableViewCell" customModule="BurgeRate" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="143.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -348,14 +348,10 @@
                                     <outlet property="Restaurant" destination="hgT-eM-QGk" id="mLh-Jb-wrv"/>
                                     <outlet property="Stars" destination="xCx-IO-T6f" id="yaP-iL-eSD"/>
                                     <outlet property="User" destination="6JR-qx-x62" id="Qat-3L-svf"/>
-                                    <outlet property="url" destination="vF1-JR-rTS" id="JCQ-At-iOx"/>
+                                    <outlet property="url" destination="vF1-JR-rTS" id="Z5Y-dX-zY5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="T2y-uG-TDV" id="D2H-pM-h9X"/>
-                            <outlet property="delegate" destination="T2y-uG-TDV" id="ggr-Zo-LLi"/>
-                        </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Feed" id="YOT-gY-LiB"/>
                 </tableViewController>

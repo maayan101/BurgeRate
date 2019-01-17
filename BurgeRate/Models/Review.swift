@@ -8,7 +8,6 @@
 
 import Foundation
 class Review{
-    let RevID:String
     let Restaurant:String
     let User:String
     let Rank:String
@@ -16,8 +15,7 @@ class Review{
     let URL:String
     var Date:Date?
     
-    init(_rest:String, _user:String, _rank:String, _caption:String, _id:String, _url:String, _date:Date) {
-        RevID = _id
+    init(_rest:String, _user:String, _rank:String, _caption:String, _url:String, _date:Date) {
         Restaurant = _rest
         User = _user
         Rank = _rank
@@ -28,7 +26,6 @@ class Review{
     }
 
     init(json:[String:Any]){
-        RevID = json["revid"] as! String
         Restaurant = json["restaurant"] as! String
         User = json["user"] as! String
         Rank = json["rank"] as! String
@@ -39,7 +36,6 @@ class Review{
     
     func toJson()-> [String:Any]{
         var json = [String:Any]()
-        json["revid"] = RevID
         json["restaurant"] = Restaurant
         json["user"] = User
         json["rank"] = Rank

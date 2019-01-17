@@ -82,7 +82,7 @@ class FeedTableViewController: UITableViewController {
         }
         return cell
     }
-    
+    /*
     var selectedId:String?
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NSLog("user select row \(indexPath.row)")
@@ -90,7 +90,7 @@ class FeedTableViewController: UITableViewController {
         self.performSegue(withIdentifier: "StudentDetailsView", sender: self)
     }
     
-    /*
+    
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
      // Return false if you do not want the specified item to be editable.

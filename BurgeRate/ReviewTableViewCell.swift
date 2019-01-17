@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 class ReviewTableViewCell : UITableViewCell
 {
+    @IBOutlet weak var url: UIImageView!
     @IBOutlet weak var Restaurant: UILabel!
     @IBOutlet weak var Stars: UILabel!
     @IBOutlet weak var Caption: UILabel!
     @IBOutlet weak var User: UILabel!
-    @IBOutlet weak var url: UIImageView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
