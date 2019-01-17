@@ -67,19 +67,19 @@ class FeedTableViewController: UITableViewController {
         let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewTableViewCell
         
         let rv = data[indexPath.row]
-       /* cell.nameLabel.text = rv.name
-        cell.idLabel.text = rv.id
+        cell.Restaurant.text = rv.Restaurant
+        cell.Stars.text = rv.Rank + "/5 Stars"
         cell.imageView?.image = UIImage(named: "avatar")
         cell.imageView!.tag = indexPath.row
-        if rv.url != "" {
-            Model.instance.getImage(url: rv.url) { (image:UIImage?) in
+        if rv.URL != "" {
+            Model.instance.getImage(url: rv.URL) { (image:UIImage?) in
                 if (cell.imageView!.tag == indexPath.row){
                     if image != nil {
                         cell.imageView?.image = image!
                     }
                 }
             }
-        }*/
+        }
         return cell
     }
     
