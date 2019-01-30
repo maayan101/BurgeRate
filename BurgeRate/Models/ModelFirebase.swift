@@ -44,10 +44,10 @@ class ModelFirebase {
             callback(data)
         })
     }
-    
+    */
     func addNewUser(user:User){
-        ref.child("users").child(User.id).setValue(user.toJson())
-    }*/
+        ref.child("users").child(User._id).setValue(user.toJson())
+    }
     
     func getUser(byId:String)->User?{
         return nil
