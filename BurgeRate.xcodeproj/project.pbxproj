@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D1AA02202075100330357 /* FeedTableViewController.swift */; };
 		39BDD42D124C0DDF4EAFE0C5 /* Pods_BurgeRateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975872DAC2922E6E9C31B3D8 /* Pods_BurgeRateUITests.framework */; };
 		78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670221C7022E005EB320 /* AppDelegate.swift */; };
 		78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670421C7022E005EB320 /* EntryViewController.swift */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		172D1A9C2202071900330357 /* BurgeRate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BurgeRate-Bridging-Header.h"; sourceTree = "<group>"; };
+		172D1AA02202075100330357 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		1C1326220D528C03D378CD96 /* Pods-BurgeRateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRateUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRateUITests/Pods-BurgeRateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		37956B4F01F6C4C16DB2D92D /* Pods_BurgeRateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurgeRateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44850A26394BF69A9B00F2EF /* Pods-BurgeRateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRateTests/Pods-BurgeRateTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				78EC670E21C70233005EB320 /* Info.plist */,
 				78EC673021C7200B005EB320 /* LoginViewController.swift */,
 				78EC673221C72028005EB320 /* SignUpViewController.swift */,
+				172D1A9C2202071900330357 /* BurgeRate-Bridging-Header.h */,
+				172D1AA02202075100330357 /* FeedTableViewController.swift */,
 			);
 			path = BurgeRate;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 				TargetAttributes = {
 					78EC66FE21C7022E005EB320 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1000;
 					};
 					78EC671221C70234005EB320 = {
 						CreatedOnToolsVersion = 10.1;
@@ -417,6 +423,7 @@
 				78F723EB21EF97A900505FB5 /* ModelFirebase.swift in Sources */,
 				78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */,
 				78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */,
+				172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */,
 				78F723E721EF926200505FB5 /* User.swift in Sources */,
 				78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */,
 				78F723E921EF948E00505FB5 /* Review.swift in Sources */,
@@ -596,6 +603,7 @@
 			baseConfigurationReference = D7B1B5065D5AA6BD061AEFB5 /* Pods-BurgeRate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U3UBS4YUF5;
 				INFOPLIST_FILE = BurgeRate/Info.plist;
@@ -606,6 +614,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BurgeRate.BurgeRate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BurgeRate/BurgeRate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -616,6 +626,7 @@
 			baseConfigurationReference = 4A9DCBC0EAA3B5CE9C1E83CA /* Pods-BurgeRate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U3UBS4YUF5;
 				INFOPLIST_FILE = BurgeRate/Info.plist;
@@ -626,6 +637,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BurgeRate.BurgeRate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BurgeRate/BurgeRate-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -21,5 +21,22 @@ class Review{
         Rank = _rank
         Caption = _caption
     }
+
+    init(json:[String:Any]){
+        RevID = json["revid"] as! String
+        Restaurant = json["restaurant"] as! String
+        User = json["user"] as! String
+        Rank = json["rank"] as! String
+        Caption = json["caption"] as! String
+    }
     
+    func toJson()-> [String:Any]{
+        var json = [String:Any]()
+        json["revid"] = RevID
+        json["restaurant"] = Restaurant
+        json["user"] = User
+        json["rank"] = Rank
+        json["caption"] = Caption
+        return json
+    }
 }

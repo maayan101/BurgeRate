@@ -52,6 +52,24 @@ class ModelFirebase {
     func getUser(byId:String)->User?{
         return nil
     }
+    
+    func addNewReview(review:Review){
+        ref.child("reviews").child(review.RevID).setValue(review.toJson())
+    }
+    
+    func getAllReviews(callback:@escaping ([Review])->Void){
+        ref.child("reviews").observe(.value, with: {
+            (snapshot) in
+            // Get review value
+            var data = [Review]()
+            let value = snapshot.value as! [String:Any]
+            for (_, json) in value{
+                data.append(Review(json: json as! [String : Any]))
+            }
+            callback(data)
+        })
+     }
+    
 }
 
 
