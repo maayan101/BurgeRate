@@ -46,7 +46,7 @@ class ModelFirebase {
     }
     */
     func addNewUser(user:User){
-        ref.child("users").child(User._id).setValue(user.toJson())
+        ref.child("users").child(user.UserID).setValue(user.toJson())
     }
     
     func getUser(byId:String)->User?{

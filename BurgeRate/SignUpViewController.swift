@@ -37,13 +37,32 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var UserNameText: UITextField!
     @IBOutlet weak var PasswordText: UITextField!
-    @IBOutlet weak var EmailText: UITextField!
     @IBOutlet weak var GenderSeg: UISegmentedControl!
+    @IBOutlet weak var EmailText: UITextField!
+    @IBOutlet weak var UsernameVal: UILabel!
+    @IBOutlet weak var PasswordVal: UILabel!
+    @IBOutlet weak var EmailVal: UILabel!
+    @IBOutlet weak var GenderVal: UILabel!
     
+    func validateUsername(username: String) -> Bool {
+        if username == "" {
+            UsernameVal.text = "Username can't be empty"
+            return false
+        }
+        if username.count < 5 {
+            UsernameVal.text = "Username can't be less then 5 characters"
+            return false
+        }
+        
+        return true
+    }
+
     @IBAction func SignUp(_ sender: UIButton) {
-        let user = User(_id: "1", _username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender : GenderSeg.title(GenderSeg.selectedSegmentIndex)!)
-        Model.instance.addNewStudent(student: st)
-        self.navigationController?.popViewController(animated: true)
+        if validateUsername(username: UserNameText.text!) {
+            let user = User(_id: "1", _username: UserNameText.text!, _password:             PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
+            Model.instance.addNewUser(user:user)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func back(_ sender: UIButton) {
