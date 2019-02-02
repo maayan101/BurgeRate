@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-
+/*
 class FeedTableViewController: UITableViewController {
     var data = [Review]()
     var ReviewListener:NSObjectProtocol?
@@ -64,7 +64,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentTableViewCell
+        /*let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentTableViewCell
         
         let rv = data[indexPath.row]
         cell.nameLabel.text = st.name
@@ -80,7 +80,7 @@ class FeedTableViewController: UITableViewController {
                 }
             }
         }
-        return cell
+        return cell*/
     }
     
     var selectedId:String?
@@ -136,3 +136,4 @@ class FeedTableViewController: UITableViewController {
     
     
 }
+*/
