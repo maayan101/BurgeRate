@@ -1,5 +1,5 @@
 //
-//  ReviewTebleViewCell.swift
+//  ReviewTableViewCell.swift
 //  BurgeRate
 //
 //  Created by MS-VM on 16/01/2019.
@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+class ReviewTableViewCell : UITableViewCell
+{
+    @IBOutlet weak var url: UIImageView!
+    @IBOutlet weak var Restaurant: UILabel!
+    @IBOutlet weak var Stars: UILabel!
+    @IBOutlet weak var Caption: UILabel!
+    @IBOutlet weak var User: UILabel!
 
-class ReviewTableViewCell: UITableViewCell {
-    
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +27,4 @@ class ReviewTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
 }
-

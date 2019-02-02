@@ -22,7 +22,7 @@ class FeedTableViewController: UITableViewController {
             self.data = data as! [Review]
             self.tableView.reloadData()
         }
-        Model.instance.getAllReviews(callback: <#T##([Review]) -> Void#>)
+        Model.instance.getAllReviews()
         
         //        Model.instance.signin(email: "eliav@temp.com", password: "1234567890") { (ret:Bool) in
         //            if (ret){
@@ -64,15 +64,15 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        /*let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentTableViewCell
+        let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewTableViewCell
         
         let rv = data[indexPath.row]
-        cell.nameLabel.text = st.name
-        cell.idLabel.text = st.id
+        cell.Restaurant.text = rv.Restaurant
+        cell.Stars.text = rv.Rank + "/5 Stars"
         cell.imageView?.image = UIImage(named: "avatar")
         cell.imageView!.tag = indexPath.row
-        if st.url != "" {
-            Model.instance.getImage(url: st.url) { (image:UIImage?) in
+        if rv.URL != "" {
+            Model.instance.getImage(url: rv.URL) { (image:UIImage?) in
                 if (cell.imageView!.tag == indexPath.row){
                     if image != nil {
                         cell.imageView?.image = image!
@@ -80,17 +80,17 @@ class FeedTableViewController: UITableViewController {
                 }
             }
         }
-        return cell*/
+        return cell
     }
-    
+    /*
     var selectedId:String?
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NSLog("user select row \(indexPath.row)")
-        selectedId = data[indexPath.row].id
+        selectedId = data[indexPath.row].RevID
         self.performSegue(withIdentifier: "StudentDetailsView", sender: self)
     }
     
-    /*
+    
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
      // Return false if you do not want the specified item to be editable.
@@ -123,7 +123,7 @@ class FeedTableViewController: UITableViewController {
      // Return false if you do not want the item to be re-orderable.
      return true
      }
-     */
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StudentDetailsView"{
@@ -131,8 +131,8 @@ class FeedTableViewController: UITableViewController {
             studentDetailsVc.studentId = self.selectedId
             
         }
-        
-    }
+ 
+    }*/
     
     
 }

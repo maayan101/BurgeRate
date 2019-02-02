@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D1AA02202075100330357 /* FeedTableViewController.swift */; };
 		39BDD42D124C0DDF4EAFE0C5 /* Pods_BurgeRateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975872DAC2922E6E9C31B3D8 /* Pods_BurgeRateUITests.framework */; };
-		785E4E5B21EFFB2C006D2E1E /* ReviewTebleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785E4E5A21EFFB2C006D2E1E /* ReviewTebleViewCell.swift */; };
+		785E4E5D21F00764006D2E1E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */; };
 		78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670221C7022E005EB320 /* AppDelegate.swift */; };
 		78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670421C7022E005EB320 /* EntryViewController.swift */; };
 		78EC670821C7022E005EB320 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78EC670621C7022E005EB320 /* Main.storyboard */; };
@@ -53,7 +53,7 @@
 		37956B4F01F6C4C16DB2D92D /* Pods_BurgeRateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurgeRateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44850A26394BF69A9B00F2EF /* Pods-BurgeRateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRateTests/Pods-BurgeRateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A9DCBC0EAA3B5CE9C1E83CA /* Pods-BurgeRate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRate.release.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRate/Pods-BurgeRate.release.xcconfig"; sourceTree = "<group>"; };
-		785E4E5A21EFFB2C006D2E1E /* ReviewTebleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTebleViewCell.swift; sourceTree = "<group>"; };
+		785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		78EC66FF21C7022E005EB320 /* BurgeRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgeRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78EC670221C7022E005EB320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78EC670421C7022E005EB320 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 				78EC673221C72028005EB320 /* SignUpViewController.swift */,
 				172D1A9C2202071900330357 /* BurgeRate-Bridging-Header.h */,
 				172D1AA02202075100330357 /* FeedTableViewController.swift */,
-				785E4E5A21EFFB2C006D2E1E /* ReviewTebleViewCell.swift */,
+				785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */,
 			);
 			path = BurgeRate;
 			sourceTree = "<group>";
@@ -366,6 +366,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BurgeRate/Pods-BurgeRate-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -374,6 +375,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -433,7 +435,7 @@
 				172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */,
 				78F723E721EF926200505FB5 /* User.swift in Sources */,
 				78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */,
-				785E4E5B21EFFB2C006D2E1E /* ReviewTebleViewCell.swift in Sources */,
+				785E4E5D21F00764006D2E1E /* ReviewTableViewCell.swift in Sources */,
 				78F723E921EF948E00505FB5 /* Review.swift in Sources */,
 				78F723EF21EFAAEC00505FB5 /* Model.swift in Sources */,
 			);
