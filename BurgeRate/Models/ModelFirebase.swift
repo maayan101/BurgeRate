@@ -38,7 +38,7 @@ class ModelFirebase {
             // Get user value
             var data = [Student]()
             let value = snapshot.value as! [String:Any]
-            for (_, json) in value{
+            for (_, json) in value{ 
                 data.append(Student(json: json as! [String : Any]))
             }
             callback(data)
@@ -46,11 +46,24 @@ class ModelFirebase {
     }
     */
     func addNewUser(user:User){
-        ref.child("users").child(user.UserID).setValue(user.toJson())
+        ref.child("users").childByAutoId().setValue(user.toJson())
     }
     
     func getUser(byId:String)->User?{
-        return nil
+        return ref.child("users").child(byId).value(forKey: byId) as? User
+    }
+    
+    func isExistsUserByUsername(username:String)->Bool{
+        let isExists = true
+        return ref.child("users").queryOrdered(byChild: "username").queryEqual(toValue: username).observe(., with: { (snapshot) in
+            if snapshot.exists() {
+                 isExists = true
+            }
+            else {
+                isExists = false
+            }
+        })
+        return isExists
     }
     
     func addNewReview(review:Review){
