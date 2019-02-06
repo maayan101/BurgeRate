@@ -61,6 +61,23 @@ class SignUpViewController: UIViewController {
         
         return true
     }
+    func validatePassword(password: String) -> Bool {
+        if password == "" {
+            PasswordVal.text = "Password can't be empty"
+            return false
+        }
+        if password.count < 6 {
+            PasswordVal.text = "Password can't be less then 6 characters"
+            return false
+        }
+        
+        if password.count > 20 {
+            PasswordVal.text = "Password can't be more then 20 characters"
+            return false
+        }
+        
+        return true
+    }
     func isValidEmail(email:String) -> Bool {
         if email == "" {
             EmailVal.text = "Email address can't be empty"
@@ -81,7 +98,7 @@ class SignUpViewController: UIViewController {
     
     func isFormValid(username:String, password:String, email:String, gender:String) -> Bool {
         let valUsernameResult = validateUsername(username: username)
-        let valPasswordResult = true
+        let valPasswordResult = validatePassword(password: password)
         let valEmailResult = isValidEmail(email: email)
         
         if valUsernameResult && valEmailResult && valPasswordResult {
@@ -93,9 +110,13 @@ class SignUpViewController: UIViewController {
 
     @IBAction func SignUp(_ sender: UIButton) {
         if isFormValid(username: UserNameText.text!, password: PasswordText.text!, email: EmailText.text!, gender: "Male") {
-            let user = User(_username: UserNameText.text!, _password:             PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
-            Model.instance.addNewUser(user:user)
-            self.navigationController?.popViewController(animated: true)
+            let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
+            let success = Model.instance.addNewUser(User: user)
+            if success {
+                self.navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
+            } else {
+                EmailVal.text = "Email address already exists"
+            }
         }
     }
     
