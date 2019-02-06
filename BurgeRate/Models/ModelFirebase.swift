@@ -45,14 +45,44 @@ class ModelFirebase {
         })
     }
     */
-    func addNewUser(user:User){
-        ref.child("users").childByAutoId().setValue(user.toJson())
+    func signin(email:String, password:String, callback:@escaping (Bool)->Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if (user != nil){
+                //user?.user.uid
+                callback(true)
+            }else{
+                callback(false)
+            }
+        }
+        
+    }
+    
+    func createUser(email:String, password:String) -> Bool {
+        var flag = false
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            if error != nil {
+                flag = false
+            } else {
+                flag = true
+            }
+        }
+        return flag
+        
+    }
+    
+    func addNewUser(User:User) -> Bool {
+        let flag = createUser(email: User.Email, password: User.Password)
+        if flag {
+            ref.child("users").childByAutoId().setValue(User.toJson())
+        }
+
+        return flag
     }
     
     func getUser(byId:String)->User?{
         return ref.child("users").child(byId).value(forKey: byId) as? User
     }
-    
+    /*
     func isExistsUserByUsername(username:String)->Bool{
         let isExists = true
         return ref.child("users").queryOrdered(byChild: "username").queryEqual(toValue: username).observe(., with: { (snapshot) in
@@ -65,7 +95,7 @@ class ModelFirebase {
         })
         return isExists
     }
-    
+    */
     func addNewReview(review:Review){
         //ref.child("reviews").child(review.RevID).setValue(review.toJson())
     }

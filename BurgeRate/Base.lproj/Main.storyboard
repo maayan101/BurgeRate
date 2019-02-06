@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="37v-Au-fpv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nac-Pf-NTD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,9 +106,6 @@
                                 <rect key="frame" x="147" y="360" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
-                                <connections>
-                                    <segue destination="37v-Au-fpv" kind="show" id="bjF-hH-QZt"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fe9-cm-QCE">
                                 <rect key="frame" x="181" y="174" width="97" height="30"/>
@@ -138,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vq-O4-gUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="318"/>
+            <point key="canvasLocation" x="704.79999999999995" y="317.99100449775113"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="SBk-fX-rGs">
@@ -153,7 +150,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up Now"/>
                                 <connections>
-                                    <action selector="SignUp:" destination="1GW-dO-5D0" eventType="touchUpInside" id="i8O-Ky-6CM"/>
+                                    <action selector="SignUp:" destination="1GW-dO-5D0" eventType="touchUpInside" id="Yih-iI-v9f"/>
+                                    <segue destination="37v-Au-fpv" kind="push" id="bRC-G2-U2P"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1M-40-c9T">
@@ -259,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jg1-TZ-8aV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704.79999999999995" y="1022.3388305847077"/>
+            <point key="canvasLocation" x="705" y="1003"/>
         </scene>
         <!--Add Review-->
         <scene sceneID="lb2-Xk-x9d">
@@ -275,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdw-Y3-G6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1428" y="2363"/>
+            <point key="canvasLocation" x="1473" y="2192"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="rrP-w0-gMh">
@@ -291,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfm-DR-sLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="2885"/>
+            <point key="canvasLocation" x="705" y="2192"/>
         </scene>
         <!--Feed-->
         <scene sceneID="wgl-YW-Mla">
@@ -357,12 +355,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piJ-ly-zLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="536.79999999999995" y="1721.2893553223389"/>
+            <point key="canvasLocation" x="2298" y="2192"/>
         </scene>
         <!--Menu-->
         <scene sceneID="t1R-Rp-vHR">
             <objects>
                 <tabBarController title="Menu" id="37v-Au-fpv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="O8i-Hb-6UH"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fsB-2R-PMw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -376,7 +375,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0T4-K1-lqS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-476" y="1836"/>
+            <point key="canvasLocation" x="1671" y="1336"/>
         </scene>
     </scenes>
 </document>
