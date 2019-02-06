@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 class ModelFirebase {
     var ref: DatabaseReference!
@@ -71,7 +72,7 @@ class ModelFirebase {
      }
     
     lazy var storageRef = Storage.storage().reference(forURL:
-        "gs://ios2018-f658d.appspot.com")
+        "gs://burgerate-89ca7.appspot.com/")
     
     func saveImage(image:UIImage, name:(String),
                    callback:@escaping (String?)->Void){
