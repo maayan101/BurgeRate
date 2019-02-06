@@ -39,21 +39,64 @@ class ModelFirebase {
             // Get user value
             var data = [Student]()
             let value = snapshot.value as! [String:Any]
-            for (_, json) in value{
+            for (_, json) in value{ 
                 data.append(Student(json: json as! [String : Any]))
             }
             callback(data)
         })
     }
     */
-    func addNewUser(user:User){
-        ref.child("users").child(user.UserID).setValue(user.toJson())
+    func signin(email:String, password:String, callback:@escaping (Bool)->Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if (user != nil){
+                //user?.user.uid
+                callback(true)
+            }else{
+                callback(false)
+            }
+        }
+        
+    }
+    
+    func createUser(email:String, password:String) -> Bool {
+        var flag = false
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            if error != nil {
+                flag = false
+            } else {
+                flag = true
+            }
+        }
+        return flag
+        
+    }
+    
+    func addNewUser(User:User) -> Bool {
+        let flag = createUser(email: User.Email, password: User.Password)
+        if flag {
+            ref.child("users").childByAutoId().setValue(User.toJson())
+        }
+
+        return flag
     }
     
     func getUser(byId:String)->User?{
-        return nil
+        return ref.child("users").child(byId).value(forKey: byId) as? User
     }
-    
+    /*
+    func isExistsUserByUsername(username:String)->Bool{
+        let isExists = true
+        return ref.child("users").queryOrdered(byChild: "username").queryEqual(toValue: username).observe(., with: { (snapshot) in
+            if snapshot.exists() {
+                 isExists = true
+            }
+            else {
+                isExists = false
+            }
+        })
+        return isExists
+    }
+    */
     func addNewReview(review:Review){
         //ref.child("reviews").child(review.RevID).setValue(review.toJson())
     }
