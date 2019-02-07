@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class ModelFirebase {
     var ref: DatabaseReference!
@@ -80,9 +81,10 @@ class ModelFirebase {
         return flag
     }
     
-    func getUser(byId:String)->User?{
-        return ref.child("users").child(byId).value(forKey: byId) as? User
+    func getUser(byId:String) -> User?{
+        return User(json: (ref.child("users").child(byId).value(forKey: byId) as? [String: Any])!)
     }
+    
     /*
     func isExistsUserByUsername(username:String)->Bool{
         let isExists = true

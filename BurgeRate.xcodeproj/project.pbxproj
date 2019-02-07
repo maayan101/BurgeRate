@@ -19,6 +19,7 @@
 		78EC672321C70234005EB320 /* BurgeRateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC672221C70234005EB320 /* BurgeRateUITests.swift */; };
 		78EC673121C7200B005EB320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC673021C7200B005EB320 /* LoginViewController.swift */; };
 		78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC673221C72028005EB320 /* SignUpViewController.swift */; };
+		78F267CC220BC0F20018AE9A /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F267CB220BC0F20018AE9A /* AddReviewViewController.swift */; };
 		78F723E421EF7EDF00505FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */; };
 		78F723E721EF926200505FB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723E621EF926200505FB5 /* User.swift */; };
 		78F723E921EF948E00505FB5 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723E821EF948E00505FB5 /* Review.swift */; };
@@ -69,6 +70,7 @@
 		78EC672421C70234005EB320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78EC673021C7200B005EB320 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78EC673221C72028005EB320 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		78F267CB220BC0F20018AE9A /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		78F723E321EF7EDE00505FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78F723E621EF926200505FB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		78F723E821EF948E00505FB5 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				172D1A9C2202071900330357 /* BurgeRate-Bridging-Header.h */,
 				172D1AA02202075100330357 /* FeedTableViewController.swift */,
 				785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */,
+				78F267CB220BC0F20018AE9A /* AddReviewViewController.swift */,
 			);
 			path = BurgeRate;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			files = (
 				78EC673121C7200B005EB320 /* LoginViewController.swift in Sources */,
 				78F723EB21EF97A900505FB5 /* ModelFirebase.swift in Sources */,
+				78F267CC220BC0F20018AE9A /* AddReviewViewController.swift in Sources */,
 				78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */,
 				78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */,
 				172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */,

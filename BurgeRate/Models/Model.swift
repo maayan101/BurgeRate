@@ -44,8 +44,8 @@ class Model {
         //Student.addNew(database: modelSql!.database, student: student)
     }*/
     
-    func getStudent(byId:String)->User?{
-        return modelFirebase.getUser(byId:byId)
+    func getUser(byId:String) -> User? {
+        return modelFirebase.getUser(byId: byId)
         //return Student.get(database: modelSql!.database, byId: byId);
     }
     

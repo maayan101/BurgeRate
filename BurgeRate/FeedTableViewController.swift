@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/*
+
 class FeedTableViewController: UITableViewController {
     var data = [Review]()
     var ReviewListener:NSObjectProtocol?
@@ -69,6 +69,8 @@ class FeedTableViewController: UITableViewController {
         let rv = data[indexPath.row]
         cell.Restaurant.text = rv.Restaurant
         cell.Stars.text = rv.Rank + "/5 Stars"
+        cell.User.text = "by " + rv.User
+        cell.Caption.text = rv.Caption
         cell.imageView?.image = UIImage(named: "avatar")
         cell.imageView!.tag = indexPath.row
         if rv.URL != "" {
@@ -136,4 +138,4 @@ class FeedTableViewController: UITableViewController {
     
     
 }
-*/
+
