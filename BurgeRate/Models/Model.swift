@@ -21,7 +21,9 @@ class Model {
         //modelSql = ModelSql()
     }
     
-    
+    func addNewUser(User: User) -> Bool {
+        return modelFirebase.addNewUser(User: User)
+    }
   /*  func getAllUsers() {
         ModelFirebase.getAllStudents(callback: {(data:[User]) in
             NotificationCenter.default.post(name: NSNotification.Name(self.usersListNotification),
@@ -37,10 +39,10 @@ class Model {
     }
     */
     
-    func addNewUser(user:User){
+    /*func addNewUser(user:User){
         modelFirebase.addNewUser(user:user);
         //Student.addNew(database: modelSql!.database, student: student)
-    }
+    }*/
     
     func getStudent(byId:String)->User?{
         return modelFirebase.getUser(byId:byId)

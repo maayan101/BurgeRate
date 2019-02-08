@@ -54,14 +54,69 @@ class SignUpViewController: UIViewController {
             return false
         }
         
+        if username.count > 20 {
+            UsernameVal.text = "Username can't be more then 20 characters"
+            return false
+        }
+        
         return true
+    }
+    func validatePassword(password: String) -> Bool {
+        if password == "" {
+            PasswordVal.text = "Password can't be empty"
+            return false
+        }
+        if password.count < 6 {
+            PasswordVal.text = "Password can't be less then 6 characters"
+            return false
+        }
+        
+        if password.count > 20 {
+            PasswordVal.text = "Password can't be more then 20 characters"
+            return false
+        }
+        
+        return true
+    }
+    func isValidEmail(email:String) -> Bool {
+        if email == "" {
+            EmailVal.text = "Email address can't be empty"
+            return false
+        }
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if emailTest.evaluate(with: email) == false {
+            EmailVal.text = "Email address isn't valid"
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    func isFormValid(username:String, password:String, email:String, gender:String) -> Bool {
+        let valUsernameResult = validateUsername(username: username)
+        let valPasswordResult = validatePassword(password: password)
+        let valEmailResult = isValidEmail(email: email)
+        
+        if valUsernameResult && valEmailResult && valPasswordResult {
+            return true
+        }
+        
+        return false
     }
 
     @IBAction func SignUp(_ sender: UIButton) {
-        if validateUsername(username: UserNameText.text!) {
-            let user = User(_id: "1", _username: UserNameText.text!, _password:             PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
-            Model.instance.addNewUser(user:user)
-            self.navigationController?.popViewController(animated: true)
+        if isFormValid(username: UserNameText.text!, password: PasswordText.text!, email: EmailText.text!, gender: "Male") {
+            let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
+            let success = Model.instance.addNewUser(User: user)
+            if success {
+                self.navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
+            } else {
+                EmailVal.text = "Email address already exists"
+            }
         }
     }
     
