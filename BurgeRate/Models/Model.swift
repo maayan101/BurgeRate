@@ -49,15 +49,20 @@ class Model {
         //return Student.get(database: modelSql!.database, byId: byId);
     }
     
-    
     func getAllReviews() {
+        modelFirebase.getAllReviews(callback: {(data:[Review]) in
+            ModelNotification.ReviewListNotification.notify(data: data)
+        })
+    }
+    
+    /*func getAllReviews() {
         modelFirebase.getAllReviews(callback: {(data:[Review]) in
             NotificationCenter.default.post(name: NSNotification.Name(self.reviewsListNotification),
                                             object: self,
                                             userInfo: ["data":data])
             
         })
-    }
+    }*/
     
     func saveImage(image:UIImage, name:(String),callback:@escaping (String?)->Void){
         modelFirebase.saveImage(image: image, name: name, callback: callback)
@@ -65,17 +70,16 @@ class Model {
     }
     
     func getImage(url:String, callback:@escaping (UIImage?)->Void){
-        //modelFirebase.getImage(url: url, callback: callback)
-        
         //1. try to get the image from local store
         let _url = URL(string: url)
         let localImageName = _url!.lastPathComponent
+        
         if let image = self.getImageFromFile(name: localImageName){
             callback(image)
             print("got image from cache \(localImageName)")
         }else{
             //2. get the image from Firebase
-            modelFirebase.getImage(url: url){(image:UIImage?) in
+            self.modelFirebase.getImage(url: url){(image:UIImage?) in
                 if (image != nil){
                     //3. save the image localy
                     self.saveImageToFile(image: image!, name: localImageName)
@@ -106,23 +110,18 @@ class Model {
         let filename = getDocumentsDirectory().appendingPathComponent(name)
         return UIImage(contentsOfFile:filename.path)
     }
-    
-    
-    
 
 }
     class ModelNotification{
-        static let ReviewListNotification = MyNotification<[Review]>("com.menachi.studentlist")
+        static let ReviewListNotification = MyNotification<[Review]>(_name: "com.BurgeRate.reviewlist")
         
         class MyNotification<T>{
             let name:String
-            var count = 0;
-            
-            init(_ _name:String) {
+            init(_name:String) {
                 name = _name
             }
             func observe(cb:@escaping (T)->Void)-> NSObjectProtocol{
-                count += 1
+
                 return NotificationCenter.default.addObserver(forName: NSNotification.Name(name),
                                                               object: nil, queue: nil) { (data) in
                                                                 if let data = data.userInfo?["data"] as? T {
@@ -138,7 +137,6 @@ class Model {
             }
             
             func remove(observer: NSObjectProtocol){
-                count -= 1
                 NotificationCenter.default.removeObserver(observer, name: nil, object: nil)
             }
             
