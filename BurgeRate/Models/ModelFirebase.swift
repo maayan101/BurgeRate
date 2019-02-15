@@ -141,6 +141,23 @@ class ModelFirebase {
     
     func getImage(url:String, callback:@escaping (UIImage?)->Void){
         let ref = Storage.storage().reference(forURL: url)
+        
+        /*ref.child(url).getData(maxSize: 10 * 1024 * 1024) { (data, error) -> Void in
+            
+            if (error != nil) {
+                
+                print(error!.localizedDescription)
+                
+            } else {
+                
+                let image = UIImage(data: data!)
+                print("– – – Succesfully downloaded the shared profile picture")
+                callback(image)
+            }
+            
+            
+        }*/
+        
         ref.getData(maxSize: 10 * 1024 * 1024) { data, error in
             if error != nil {
                 callback(nil)
