@@ -22,31 +22,6 @@ class ModelFirebase {
         
     }
     
-   /* func getAllStudents(callback:@escaping ([Student])->Void){
-        //        ref.child("students").observeSingleEvent(of: .value, with: { (snapshot) in
-        //            // Get user value
-        //            var data = [Student]()
-        //            let value = snapshot.value as! [String:Any]
-        //            for (_, json) in value{
-        //                data.append(Student(json: json as! [String : Any]))
-        //            }
-        //            callback(data)
-        //        }) { (error) in
-        //            print(error.localizedDescription)
-        //        }
-        
-        ref.child("students").observe(.value, with: {
-            (snapshot) in
-            // Get user value
-            var data = [Student]()
-            let value = snapshot.value as! [String:Any]
-            for (_, json) in value{ 
-                data.append(Student(json: json as! [String : Any]))
-            }
-            callback(data)
-        })
-    }
-    */
     func signin(email:String, password:String, callback:@escaping (Bool)->Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if (user != nil){
@@ -56,7 +31,6 @@ class ModelFirebase {
                 callback(false)
             }
         }
-        
     }
     
     func createUser(email:String, password:String) -> Bool {
@@ -100,7 +74,7 @@ class ModelFirebase {
     }
     */
     func addNewReview(review:Review){
-        //ref.child("reviews").child(review.RevID).setValue(review.toJson())
+        ref.child("reviews").childByAutoId().setValue(review.toJson())
     }
     
     func getAllReviews(callback:@escaping ([Review])->Void){

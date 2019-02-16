@@ -39,10 +39,9 @@ class Model {
     }
     */
     
-    /*func addNewUser(user:User){
-        modelFirebase.addNewUser(user:user);
-        //Student.addNew(database: modelSql!.database, student: student)
-    }*/
+    func addNewReview(review:Review){
+        modelFirebase.addNewReview(review: review)
+    }
     
     func getUser(byId:String) -> User? {
         return modelFirebase.getUser(byId: byId)

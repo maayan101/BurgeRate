@@ -10,12 +10,12 @@ import Foundation
 class Review{
     let Restaurant:String
     let User:String
-    let Rank:String
+    let Rank: Int
     let Caption:String
     let URL:String
     var Date:Date?
     
-    init(_rest:String, _user:String, _rank:String, _caption:String, _url:String, _date:Date) {
+    init(_rest:String, _user:String, _rank:Int, _caption:String, _url:String, _date:Date) {
         Restaurant = _rest
         User = _user
         Rank = _rank
@@ -28,7 +28,7 @@ class Review{
     init(json:[String:Any]){
         Restaurant = json["restaurant"] as! String
         User = json["user"] as! String
-        Rank = json["rank"] as! String
+        Rank = json["rank"] as! Int
         Caption = json["caption"] as! String
         URL = json["url"] as! String
         Date = (json["date"] as! String).toDate(dateFormat: "dd-MM")

@@ -60,7 +60,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 256
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +68,8 @@ class FeedTableViewController: UITableViewController {
         
         let rv = data[indexPath.row]
         cell.Restaurant.text = rv.Restaurant
-        cell.Stars.text = rv.Rank + "/5 Stars"
+        let rank : String = String (describing : rv.Rank)
+        cell.Stars.text = rank + "/5 Stars"
         cell.User.text = "by " + rv.User
         cell.Caption.text = rv.Caption
         cell.imageView?.image = UIImage(named: "avatar")
@@ -82,6 +83,7 @@ class FeedTableViewController: UITableViewController {
                 }
             }
         }
+        
         return cell
     }
     /*
