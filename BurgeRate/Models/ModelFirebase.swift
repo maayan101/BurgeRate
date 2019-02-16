@@ -33,27 +33,18 @@ class ModelFirebase {
         }
     }
     
-    func createUser(email:String, password:String) -> Bool {
-        var flag = false
+    func createUser(User: User, email:String, password:String, callback:@escaping (Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if error != nil {
-                flag = false
+                callback(false)
             } else {
-                flag = true
+                self.ref.child("users").childByAutoId().setValue(User.toJson())
+                callback(true)
             }
         }
-        return flag
         
     }
     
-    func addNewUser(User:User) -> Bool {
-        let flag = createUser(email: User.Email, password: User.Password)
-        if flag {
-            ref.child("users").childByAutoId().setValue(User.toJson())
-        }
-
-        return flag
-    }
     
     func getUser(byId:String) -> User?{
         return User(json: (ref.child("users").child(byId).value(forKey: byId) as? [String: Any])!)

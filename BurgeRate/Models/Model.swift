@@ -21,8 +21,12 @@ class Model {
         //modelSql = ModelSql()
     }
     
-    func addNewUser(User: User) -> Bool {
-        return modelFirebase.addNewUser(User: User)
+    func signin(email: String, password: String, callback:@escaping (Bool)->Void) {
+        return modelFirebase.signin(email: email, password: password, callback: callback)
+    }
+    
+    func addNewUser(User: User, email: String, password: String, callback:@escaping (Bool)->Void) {
+        return modelFirebase.createUser(User: User, email: email, password: password, callback: callback)
     }
   /*  func getAllUsers() {
         ModelFirebase.getAllStudents(callback: {(data:[User]) in

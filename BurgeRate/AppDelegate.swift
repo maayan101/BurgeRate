@@ -14,7 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    func afterLogin(){
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVc = storyboard.instantiateViewController(withIdentifier: "index")
+        window?.rootViewController = mainVc
+    }
+    
+//    func afterLogout(){
+//        window?.rootViewController?.dismiss(animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+//        window?.rootViewController = loginVc
+//    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //FirebaseApp.configure();
         // Override point for customization after application launch.
