@@ -111,12 +111,15 @@ class SignUpViewController: UIViewController {
     @IBAction func SignUp(_ sender: UIButton) {
         if isFormValid(username: UserNameText.text!, password: PasswordText.text!, email: EmailText.text!, gender: "Male") {
             let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
-            let success = Model.instance.addNewUser(User: user)
-            if success {
-                self.navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
-            } else {
-                EmailVal.text = "Email address already exists"
+            Model.instance.addNewUser(User: user, email: user.Email, password: user.Password) { (success) in
+                if success {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.EmailVal.text = "Email address already exists"
+                }
             }
+            
+            
         }
     }
     
