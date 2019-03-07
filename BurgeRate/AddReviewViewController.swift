@@ -59,24 +59,29 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     
     public func IsInputValid () -> Bool{
         if (self.rest.text! != ""){
-            self.RestError.isHidden = true
+            self.RestError.text = ""
             if (self.caption.text! != ""){
-                self.CaptionError.isHidden = true
+                self.CaptionError.text = ""
                 if (self.imageView.image != nil){
-                    self.noImageError.isHidden = true
+                    self.noImageError.text = ""
                     return true
                 }
-                self.noImageError.isHidden = false
+                else{
+                    self.noImageError.text = "What's the point with no Pic?"
+                }
             }
-            self.CaptionError.isHidden = false
+            else{
+                self.CaptionError.text = "We realy want to hear, Pls!"
+            }
         }
-        self.RestError.isHidden = false
-        
+        else{
+            self.RestError.text = "Why won't you tell us where did you eat? :("
+        }
         return false
     }
     
     @IBAction func Save(_ sender: UIButton) {
-        if IsInputValid() == true {
+        if (self.IsInputValid() == true) {
             if (imageView != nil){
                 let date = Date()
                 let name = rest!.text! + date.toString(dateFormat: "MMddHHmm")
@@ -98,7 +103,8 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func saveReviewInfo(url:String)  {
-        let rv = Review(_rest: rest.text!, _user: "gevermelech", _rank: rate!.selectedSegmentIndex , _caption: caption.text!, _url: url, _date: date.date)
+        let user = Model.instance.loggedInUser
+        let rv = Review(_rest: rest.text!, _user: user.Username, _rank: rate!.selectedSegmentIndex , _caption: caption.text!, _url: url, _date: date.date)
         
         Model.instance.addNewReview(review: rv)
         self.navigationController?.popViewController(animated: true)
