@@ -115,6 +115,7 @@ class SignUpViewController: UIViewController {
             let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
             Model.instance.addNewUser(User: user, email: user.Email, password: user.Password) { (success) in
                 if success {
+                    Model.instance.updateCurrentUser()
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.afterLogin()
                 } else {

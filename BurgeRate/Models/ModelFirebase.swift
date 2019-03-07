@@ -32,6 +32,26 @@ class ModelFirebase {
             }
         }
     }
+    /*
+    func getCurrentUser(email:String, password:String, callback:@escaping (Bool)->Void) {
+        var currUserEmail = Auth.auth().currentUser?.email
+        
+        (withEmail: email, password: password) { (user, error) in
+            if (user != nil){
+                //user?.user.uid
+                callback(true)
+            }else{
+                callback(false)
+            }
+        }
+    }
+    
+    func getUserByEmail(email:String) {
+        getUsersByEmail(email: email, callback: {(data:[User]) in
+            
+        
+    }
+        */
     
     func createUser(User: User, email:String, password:String, callback:@escaping (Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
@@ -80,6 +100,39 @@ class ModelFirebase {
             callback(data)
         })
      }
+
+    func getAllUsers(callback:@escaping ([User])->Void){
+        ref.child("users").observe(.value, with: {
+            (snapshot) in
+            // Get review value
+            var data = [User]()
+            let value = snapshot.value as! [String:Any]
+            for (_, json) in value{
+                data.append(User(json: json as! [String : Any]))
+            }
+            callback(data)
+        })
+    }
+    
+    func getCurrentUserEmail() -> String? {
+        return Auth.auth().currentUser?.email
+    }
+    
+    func getUsersByEmail(email: String, callback:@escaping ([User])->Void){
+        ref.child("users").observe(.value, with: {
+            (snapshot) in
+            // Get review value
+            var data = [User]()
+            let value = snapshot.value as! [String: Any]
+            for (_, json) in value{
+                if User(json: json as! [String: Any]).Email == email {
+                    data.append(User(json: json as! [String: Any]))
+                }
+            }
+            callback(data)
+        })
+    }
+
     
     lazy var storageRef = Storage.storage().reference(forURL:
         "gs://burgerate-89ca7.appspot.com/")

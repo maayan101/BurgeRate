@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
     @IBAction func Signin(_ sender: Any) {
         Model.instance.signin(email: EmailLoginText.text!, password: PasswordLoginText.text!) { (success) in
             if success {
+                Model.instance.updateCurrentUser()
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.afterLogin()
             } else {
