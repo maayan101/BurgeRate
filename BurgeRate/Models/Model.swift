@@ -14,6 +14,7 @@ class Model {
     
     let reviewsListNotification = ""
     var loggedInUser = User(_username: "", _password: "", _email: "", _gender: 0)
+    var userId = ""
     
     //var modelSql:ModelSql?
     var modelFirebase = ModelFirebase();
@@ -26,6 +27,11 @@ class Model {
         return modelFirebase.signin(email: email, password: password, callback: callback)
     }
     
+    func logout(){
+        modelFirebase.logout()
+        loggedInUser = User(_username: "", _password: "", _email: "", _gender: 0)
+    }
+    
     func addNewUser(User: User, email: String, password: String, callback:@escaping (Bool)->Void) {
         return modelFirebase.createUser(User: User, email: email, password: password, callback: callback)
     }
@@ -35,6 +41,16 @@ class Model {
             self.loggedInUser = users[0]
             })
     }
+    
+    func updateUser(username: String, gender: Int) {
+        modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
+            let user = users[0]
+            var newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
+            
+        })
+    }
+
+
   /*  func getAllUsers() {
         ModelFirebase.getAllStudents(callback: {(data:[User]) in
             NotificationCenter.default.post(name: NSNotification.Name(self.usersListNotification),

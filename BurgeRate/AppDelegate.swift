@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = mainVc
     }
     
-//    func afterLogout(){
-//        window?.rootViewController?.dismiss(animated: true, completion: nil)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-//        window?.rootViewController = loginVc
-//    }
+    func afterLogout(){
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVc = storyboard.instantiateViewController(withIdentifier: "EntryViewController")
+        window?.rootViewController = loginVc
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //FirebaseApp.configure();

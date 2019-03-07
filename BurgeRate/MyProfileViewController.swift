@@ -18,8 +18,12 @@ class MyProfileViewController: UIViewController {
     @IBOutlet weak var GenderUpdagteSeg: UISegmentedControl!
     
     @IBAction func UpdateUser(_ sender: Any) {
+        
     }
     @IBAction func LogOutUser(_ sender: Any) {
+        Model.instance.logout()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.afterLogout()
     }
     
     override func viewDidLoad() {
@@ -28,15 +32,6 @@ class MyProfileViewController: UIViewController {
         let user = Model.instance.loggedInUser
         UsernameUpdateText.text = user.Username
         GenderUpdagteSeg.selectedSegmentIndex = user.Gender
-        
-        //        Model.instance.signin(email: "eliav@temp.com", password: "1234567890") { (ret:Bool) in
-        //            if (ret){
-        //                print("create user success")
-        //            }else{
-        //                print("create user fail")
-        //
-        //            }
-        //        }
     }
     
     deinit{
