@@ -17,7 +17,9 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var rate: UISegmentedControl!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var noImageWarning: UILabel!
+    @IBOutlet weak var RestError: UILabel!
+    @IBOutlet weak var CaptionError: UILabel!
+    @IBOutlet weak var noImageError: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +47,8 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     // UIImagePickerControllerDelegate
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        imageToUpload = info["UIImagePickerControllerOriginalImage"] as? UIImage
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        imageToUpload = info[UIImagePickerController.InfoKey.originalImage]! as? UIImage
         imageView.image = imageToUpload
         self.dismiss(animated: true, completion: nil)
     }
@@ -55,19 +57,43 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
         
     }
     
-    @IBAction func Save(_ sender: UIButton) {
-        if imageToUpload != nil {
-            let date = Date()
-            let name = rest!.text! + date.toString(dateFormat: "MMddHHmm")
-            Model.instance.saveImage(image: imageToUpload!, name: name){ (url:String?) in
-                var _url = ""
-                if url != nil {
-                    _url = url!
+    public func IsInputValid () -> Bool{
+        if (self.rest.text! != ""){
+            self.RestError.isHidden = true
+            if (self.caption.text! != ""){
+                self.CaptionError.isHidden = true
+                if (self.imageView.image != nil){
+                    self.noImageError.isHidden = true
+                    return true
                 }
-                self.saveReviewInfo(url: _url)
+                self.noImageError.isHidden = false
             }
-        }else{
-            self.noImageWarning.isHidden = false
+            self.CaptionError.isHidden = false
+        }
+        self.RestError.isHidden = false
+        
+        return false
+    }
+    
+    @IBAction func Save(_ sender: UIButton) {
+        if IsInputValid() == true {
+            if (imageView != nil){
+                let date = Date()
+                let name = rest!.text! + date.toString(dateFormat: "MMddHHmm")
+                Model.instance.saveImage(image: imageToUpload!, name: name){ (url:String?) in
+                    var _url = ""
+                    if url != nil {
+                        _url = url!
+                    }
+                    self.saveReviewInfo(url: _url)
+                }
+            }
+            else{
+                let alert = UIAlertController(title: "Oops", message: "Guess Something's went wrong. Care to try again later PLS?", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "K Bye", style: .default) {_ in print("You Clicked OK")}
+                alert.addAction(okAction)
+                self.present(alert, animated : true, completion: nil)
+            }
         }
     }
     
