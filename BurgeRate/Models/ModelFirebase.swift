@@ -70,7 +70,9 @@ class ModelFirebase {
             if error != nil {
                 callback(false)
             } else {
-                self.ref.child("users").childByAutoId().setValue(User.toJson())
+                var email = User.Email
+                let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
+                self.ref.child("users").child(newEmail).setValue(User.toJson())
                 callback(true)
             }
         }
