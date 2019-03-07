@@ -41,8 +41,8 @@ class ModelFirebase {
         }
     }
     
-    func updateUser(user: User) -> return Bool {
-        ref.child("users").
+    func updateUser(user: User) -> Bool {
+        return true
     }
     /*
     func getCurrentUser(email:String, password:String, callback:@escaping (Bool)->Void) {
@@ -78,7 +78,7 @@ class ModelFirebase {
     }
     
     func getUser(byId:String) -> User?{
-        return User(json: (ref.child("users").value.value(forKey: byId) as? [String: Any])!)
+        return User(json: (ref.child("users").child(byId).value(forKey: byId) as? [String: Any])!)
     }
     
     
