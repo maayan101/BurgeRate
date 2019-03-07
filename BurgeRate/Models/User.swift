@@ -9,15 +9,12 @@
 import Foundation
 
 class User{
-    //let UserID:String
     let Username:String
     let Email:String
     let Password:String
-    let Gender:String
+    let Gender:Int
     
-    init( //_id:String,
-        _username:String, _password:String, _email:String, _gender:String ) {
-        //UserID = _id
+    init(_username:String, _password:String, _email:String, _gender:Int) {
         Email = _email
         Password = _password
         Gender = _gender
@@ -27,7 +24,7 @@ class User{
         //UserID = json["id"] as! String
         Email = json["email"] as! String
         Password = json["password"] as! String
-        Gender = json["gender"] as! String
+        Gender = json["gender"] as! Int
         Username = json["username"] as! String
     }
     func toJson()-> [String:Any]{

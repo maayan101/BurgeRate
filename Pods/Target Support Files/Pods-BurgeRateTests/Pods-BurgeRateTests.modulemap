@@ -1,0 +1,6 @@
+framework module Pods_BurgeRateTests {
+  umbrella header "Pods-BurgeRateTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

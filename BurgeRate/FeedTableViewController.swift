@@ -13,7 +13,7 @@ import UIKit
 class FeedTableViewController: UITableViewController {
     var data = [Review]()
     var ReviewListener:NSObjectProtocol?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

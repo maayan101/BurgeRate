@@ -1,0 +1,6 @@
+framework module Pods_BurgeRate {
+  umbrella header "Pods-BurgeRate-umbrella.h"
+
+  export *
+  module * { export * }
+}
