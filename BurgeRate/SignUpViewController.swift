@@ -59,6 +59,7 @@ class SignUpViewController: UIViewController {
             return false
         }
         
+        UsernameVal.text = ""
         return true
     }
     func validatePassword(password: String) -> Bool {
@@ -76,6 +77,7 @@ class SignUpViewController: UIViewController {
             return false
         }
         
+        PasswordVal.text = ""
         return true
     }
     func isValidEmail(email:String) -> Bool {
@@ -92,8 +94,8 @@ class SignUpViewController: UIViewController {
             return false
         }
         
+        EmailVal.text = ""
         return true
-        
     }
     
     func isFormValid(username:String, password:String, email:String, gender:String) -> Bool {
@@ -113,13 +115,12 @@ class SignUpViewController: UIViewController {
             let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
             Model.instance.addNewUser(User: user, email: user.Email, password: user.Password) { (success) in
                 if success {
-                    self.navigationController?.popViewController(animated: true)
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.afterLogin()
                 } else {
                     self.EmailVal.text = "Email address already exists"
                 }
             }
-            
-            
         }
     }
     

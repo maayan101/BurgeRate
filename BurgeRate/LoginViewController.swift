@@ -16,6 +16,10 @@ protocol LoginControllerDelegate{
 
 class LoginViewController: UIViewController {
     var delegate:LoginControllerDelegate?
+
+    @IBOutlet weak var EmailLoginText: UITextField!
+    @IBOutlet weak var PasswordLoginText: UITextField!
+    @IBOutlet weak var LoginVal: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,19 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func Signin(_ sender: Any) {
+        Model.instance.signin(email: EmailLoginText.text!, password: PasswordLoginText.text!) { (success) in
+            if success {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.afterLogin()
+            } else {
+                self.LoginVal.text = "Email address or Password is incorrect"
+            }
+            
+        }
+
     }
     
     @IBAction func back(_ sender: UIButton) {

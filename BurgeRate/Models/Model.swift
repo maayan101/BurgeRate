@@ -21,6 +21,10 @@ class Model {
         //modelSql = ModelSql()
     }
     
+    func signin(email: String, password: String, callback:@escaping (Bool)->Void) {
+        return modelFirebase.signin(email: email, password: password, callback: callback)
+    }
+    
     func addNewUser(User: User, email: String, password: String, callback:@escaping (Bool)->Void) {
         return modelFirebase.createUser(User: User, email: email, password: password, callback: callback)
     }
