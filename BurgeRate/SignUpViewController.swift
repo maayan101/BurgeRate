@@ -112,7 +112,7 @@ class SignUpViewController: UIViewController {
 
     @IBAction func SignUp(_ sender: UIButton) {
         if isFormValid(username: UserNameText.text!, password: PasswordText.text!, email: EmailText.text!, gender: "Male") {
-            let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender :    GenderSeg.titleForSegment(at: GenderSeg.selectedSegmentIndex)!)
+            let user = User(_username: UserNameText.text!, _password: PasswordText.text!, _email:EmailText.text!,_gender: GenderSeg.selectedSegmentIndex)
             Model.instance.addNewUser(User: user, email: user.Email, password: user.Password) { (success) in
                 if success {
                     Model.instance.updateCurrentUser()

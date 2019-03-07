@@ -13,7 +13,7 @@ class Model {
     static let instance:Model = Model()
     
     let reviewsListNotification = ""
-    var loggedInUser = User(_username: "", _password: "", _email: "", _gender: "")
+    var loggedInUser = User(_username: "", _password: "", _email: "", _gender: 0)
     
     //var modelSql:ModelSql?
     var modelFirebase = ModelFirebase();

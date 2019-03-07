@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-class MyProfileViewController: UITableViewController {
-    var data = [Review]()
-    var ReviewListener:NSObjectProtocol?
+class MyProfileViewController: UIViewController {
+//    var data = [Review]()
+//    var ReviewListener:NSObjectProtocol?
     
     @IBOutlet weak var UsernameUpdateText: UITextField!
     @IBOutlet weak var GenderUpdagteSeg: UISegmentedControl!
@@ -27,6 +27,7 @@ class MyProfileViewController: UITableViewController {
         
         let user = Model.instance.loggedInUser
         UsernameUpdateText.text = user.Username
+        GenderUpdagteSeg.selectedSegmentIndex = user.Gender
         
         //        Model.instance.signin(email: "eliav@temp.com", password: "1234567890") { (ret:Bool) in
         //            if (ret){
@@ -39,9 +40,9 @@ class MyProfileViewController: UITableViewController {
     }
     
     deinit{
-        if ReviewListener != nil{
-            ModelNotification.ReviewListNotification.remove(observer: ReviewListener!)
-        }
+//        if ReviewListener != nil{
+//            ModelNotification.ReviewListNotification.remove(observer: ReviewListener!)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,8 +56,8 @@ class MyProfileViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
     
 }
