@@ -17,9 +17,9 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var rate: UISegmentedControl!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var RestError: UILabel!
-    @IBOutlet weak var CaptionError: UILabel!
     @IBOutlet weak var noImageError: UILabel!
+    @IBOutlet weak var CaptionError: UILabel!
+    @IBOutlet weak var RestError: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +78,7 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
             self.RestError.text = "Why won't you tell us where did you eat? :("
         }
         return false
+
     }
     
     @IBAction func Save(_ sender: UIButton) {
@@ -107,7 +108,15 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
         let rv = Review(_rest: rest.text!, _user: user.Username, _rank: rate!.selectedSegmentIndex , _caption: caption.text!, _url: url, _date: date.date)
         
         Model.instance.addNewReview(review: rv)
+        self.popMsgSuccess()
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func popMsgSuccess() {
+        let alert = UIAlertController(title: "Great", message: "Your review was successfully added! ", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Check Feed", style: .default) {_ in print("moved to feed")}
+        alert.addAction(okAction)
+        self.present(alert, animated : true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
