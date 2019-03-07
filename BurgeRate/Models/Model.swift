@@ -13,6 +13,7 @@ class Model {
     static let instance:Model = Model()
     
     let reviewsListNotification = ""
+    var loggedInUser = User(_username: "", _password: "", _email: "", _gender: "")
     
     //var modelSql:ModelSql?
     var modelFirebase = ModelFirebase();
@@ -27,6 +28,12 @@ class Model {
     
     func addNewUser(User: User, email: String, password: String, callback:@escaping (Bool)->Void) {
         return modelFirebase.createUser(User: User, email: email, password: password, callback: callback)
+    }
+    
+    func updateCurrentUser() {
+        modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
+            self.loggedInUser = users[0]
+            })
     }
   /*  func getAllUsers() {
         ModelFirebase.getAllStudents(callback: {(data:[User]) in
