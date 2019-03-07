@@ -32,6 +32,18 @@ class ModelFirebase {
             }
         }
     }
+    
+    func logout(){
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
+    func updateUser(user: User) -> Bool {
+        return true
+    }
     /*
     func getCurrentUser(email:String, password:String, callback:@escaping (Bool)->Void) {
         var currUserEmail = Auth.auth().currentUser?.email
@@ -65,10 +77,10 @@ class ModelFirebase {
         
     }
     
-    
     func getUser(byId:String) -> User?{
         return User(json: (ref.child("users").child(byId).value(forKey: byId) as? [String: Any])!)
     }
+    
     
     /*
     func isExistsUserByUsername(username:String)->Bool{
