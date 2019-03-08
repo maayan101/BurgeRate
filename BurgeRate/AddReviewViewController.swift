@@ -23,7 +23,7 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.clearForm()
         // Do any additional setup after loading the view.
     }
     
@@ -105,16 +105,38 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
     
     func saveReviewInfo(url:String)  {
         let user = Model.instance.loggedInUser
-        let rv = Review(_rest: rest.text!, _user: user.Username, _rank: rate!.selectedSegmentIndex , _caption: caption.text!, _url: url, _date: date.date)
+        let rv = Review(_rest: rest.text!, _user: user.Username, _rank: rate!.selectedSegmentIndex + 1, _caption: caption.text!, _url: url, _date: date.date)
         
         Model.instance.addNewReview(review: rv)
         self.popMsgSuccess()
-        self.navigationController?.popViewController(animated: true)
+        self.clearForm()
+        
+        /*let tabBarController = self.tabBarController
+        _ = self.navigationController?.popViewController(animated: false)
+        tabBarController?.selectedIndex = 2
+        
+        if let tabBarController = self.presentingViewController as? UITabBarController
+        {
+            self.dismiss(animated: true){
+                tabBarController.selectedIndex = 2
+            }
+        }*/
+        //self.navigationController?.popViewController(animated: true)
+    }
+    
+    func clearForm(){
+        self.caption.text = ""
+        self.rest.text = ""
+        self.imageToUpload = nil
+        self.rate.selectedSegmentIndex = 0
+        self.RestError.text = ""
+        self.noImageError.text = ""
+        self.CaptionError.text = ""
     }
     
     func popMsgSuccess() {
         let alert = UIAlertController(title: "Great", message: "Your review was successfully added! ", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Check Feed", style: .default) {_ in print("moved to feed")}
+        let okAction = UIAlertAction(title: "K Tnx", style: .default) {_ in print("finished")}
         alert.addAction(okAction)
         self.present(alert, animated : true, completion: nil)
     }
