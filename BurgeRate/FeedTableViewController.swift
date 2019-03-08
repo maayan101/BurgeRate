@@ -75,16 +75,13 @@ class FeedTableViewController: UITableViewController {
             }
         
         cell.Caption.text = rv.Caption
-        cell.imageView?.image = UIImage(named: "avatar")
-        cell.imageView!.tag = indexPath.row
+        cell.url.image = UIImage(named: "avatar")
+        cell.url.tag = indexPath.row
         if rv.URL != "" {
             Model.instance.getImage(url: rv.URL) { (image:UIImage?) in
-                if (cell.imageView!.tag == indexPath.row){
+                if (cell.url.tag == indexPath.row){
                     if image != nil {
-                        cell.imageView?.image = image!
-                        
-                        cell.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
-                        //frame(forAlignmentRect: CGRect(x: 0, y: 0, width: 180, height: 180))
+                        cell.url.image = image!
                     }
                 }
             }

@@ -44,34 +44,14 @@ class ModelFirebase {
     func updateUser(User: User, callback:@escaping (Bool) -> Void) {
         let email = User.Email
         let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
-//        var updates = {}
-//        updates["/users/" + newEmail] = user.toJson()
-//        self.ref.child("users").child(newEmail).setValue(User.toJson())
-        self.ref.child("users/" + newEmail + "/username").setValue(User.Username)
-        self.ref.child("users/" + newEmail + "/gender").setValue(User.Gender)
+        //var updates = {}
+        //updates["/users/" + newEmail] = User.toJson()
+        self.ref.child("users").child(newEmail).setValue(User.toJson())
+//        self.ref.child("users/" + newEmail + "/username").setValue(User.Username)
+//        self.ref.child("users/" + newEmail + "/gender").setValue(User.Gender)
         
         callback(true)
     }
-    /*
-    func getCurrentUser(email:String, password:String, callback:@escaping (Bool)->Void) {
-        var currUserEmail = Auth.auth().currentUser?.email
-        
-        (withEmail: email, password: password) { (user, error) in
-            if (user != nil){
-                //user?.user.uid
-                callback(true)
-            }else{
-                callback(false)
-            }
-        }
-    }
-    
-    func getUserByEmail(email:String) {
-        getUsersByEmail(email: email, callback: {(data:[User]) in
-            
-        
-    }
-        */
     
     func createUser(User: User, email:String, password:String, callback:@escaping (Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in

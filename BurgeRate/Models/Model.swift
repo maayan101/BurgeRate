@@ -42,25 +42,7 @@ class Model {
             })
     }
     
-    /*func updateUser(username: String, gender: Int, callback:@escaping (Bool)->Void) {
-        modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
-            let user = users[0]
-            let newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
-            let cb = self.modelFirebase.updateUser(User: newUser, callback: callback)
-            //self.updateCurrentUser()
-            return cb
-        })
-    }*/
-    
     func updateUser(username: String, gender: Int, callback:@escaping (Bool)->Void) {
-        /*modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
-            let user = users[0]
-            let newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
-            let cb = self.modelFirebase.updateUser(User: newUser, callback: callback)
-            //self.updateCurrentUser()
-            return cb
-        })*/
-        
         return modelFirebase.updateUserWork(email: loggedInUser.Email, password: loggedInUser.Password, username: username, gender: gender, callback: callback)
     }
 
@@ -83,15 +65,6 @@ class Model {
             ModelNotification.ReviewListNotification.notify(data: data)
             })
     }
-    
-    /*func getAllReviews() {
-        modelFirebase.getAllReviews(callback: {(data:[Review]) in
-            NotificationCenter.default.post(name: NSNotification.Name(self.reviewsListNotification),
-                                            object: self,
-                                            userInfo: ["data":data])
-            
-        })
-    }*/
     
     func saveImage(image:UIImage, name:(String),callback:@escaping (String?)->Void){
         modelFirebase.saveImage(image: image, name: name, callback: callback)
