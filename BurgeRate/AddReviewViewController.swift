@@ -96,23 +96,26 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
                 }
             }
             else{
-                let alert = UIAlertController(title: "Oops", message: "Guess Something's went wrong. Care to try again later PLS?", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "K Bye", style: .default) {_ in print("You Clicked OK")}
-                alert.addAction(okAction)
-                self.present(alert, animated : true, completion: nil)
+               self.popMsgFail()
             }
         }
     }
     
     func saveReviewInfo(url:String)  {
         let user = Model.instance.loggedInUser
-        let rv = Review(_rest: rest.text!, _user: user.Username, _rank: rate!.selectedSegmentIndex + 1, _caption: caption.text!, _url: url, _date: date.date)
+        let rv = Review(_rest: rest.text!, _user: user.Email, _rank: rate!.selectedSegmentIndex + 1, _caption: caption.text!, _url: url, _date: date.date)
         
         vSpinner = self.showSpinner(onView: self.view)
-        Model.instance.addNewReview(review: rv){
-            self.popMsgSuccess()
-            self.removeSpinner(vSpinner: self.vSpinner!)
-            self.clearForm()
+        Model.instance.addNewReview(review: rv){(error) in
+            if (error == false)
+            {
+                self.popMsgSuccess()
+                self.removeSpinner(vSpinner: self.vSpinner!)
+                self.clearForm()
+            }
+            else{
+                self.popMsgFail()
+            }
         }
     }
     
@@ -124,6 +127,13 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
         self.RestError.text = ""
         self.noImageError.text = ""
         self.CaptionError.text = ""
+    }
+    
+    func popMsgFail(){
+        let alert = UIAlertController(title: "Oops", message: "Guess Something's went wrong. Care to try again later PLS?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "K Bye", style: .default) {_ in print("You Clicked OK")}
+        alert.addAction(okAction)
+        self.present(alert, animated : true, completion: nil)
     }
     
     func popMsgSuccess() {
@@ -157,7 +167,7 @@ extension UIViewController {
         return spinnerView
     }
     
-    func removeSpinner(vSpinner : UIView) {
+    func removeSpinner(vSpinner : UIView) -> Void{
         DispatchQueue.main.async {
             vSpinner.removeFromSuperview()
         }

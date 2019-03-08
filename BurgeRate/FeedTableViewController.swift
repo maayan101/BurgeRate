@@ -25,18 +25,9 @@ class FeedTableViewController: UITableViewController {
         }
         
         vSpinner = self.showSpinner(onView: self.view)
-        Model.instance.getAllReviews(){
+        Model.instance.getAllReviews(){ 
             self.removeSpinner(vSpinner: self.vSpinner!)
         }
-        
-        //        Model.instance.signin(email: "eliav@temp.com", password: "1234567890") { (ret:Bool) in
-        //            if (ret){
-        //                print("create user success")
-        //            }else{
-        //                print("create user fail")
-        //
-        //            }
-        //        }
     }
     
     deinit{

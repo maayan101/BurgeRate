@@ -50,9 +50,10 @@ class Model {
         })
     }
     
-    func addNewReview(review:Review, callback:@escaping ()->Void){
-        modelFirebase.addNewReview(review: review)
+    func addNewReview(review:Review, callback:@escaping (Bool)->Void){
         Review.addNew(database: modelSql.database , rv: review)
+        modelFirebase.addNewReview(review: review, callback: callback)
+        
     }
     
     func getUser(byId:String) -> User? {
@@ -60,9 +61,9 @@ class Model {
     }
     
     func getAllReviews(callback:@escaping ()->Void) {
-        modelFirebase.getAllReviews(callback: {(data:[Review]) in
+        modelFirebase.getAllReviews(callback: { (data:[Review]) in
             ModelNotification.ReviewListNotification.notify(data: data)
-        })
+            })
     }
     
     /*func getAllReviews() {

@@ -105,8 +105,16 @@ class ModelFirebase {
         return isExists
     }
     */
-    func addNewReview(review:Review){
-        ref.child("reviews").childByAutoId().setValue(review.toJson())
+    func addNewReview(review:Review ,callback:@escaping (Bool)->Void){
+        ref.child("reviews").childByAutoId().setValue(review.toJson()) { (error, ref) in
+            if (error != nil){
+                print(error?.localizedDescription as Any)
+                callback(true)
+            }
+            else{
+                callback(false)
+            }
+        }
     }
     
     func getAllReviews(callback:@escaping ([Review])->Void){
