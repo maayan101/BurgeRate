@@ -10,6 +10,9 @@
 		172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D1AA02202075100330357 /* FeedTableViewController.swift */; };
 		39BDD42D124C0DDF4EAFE0C5 /* Pods_BurgeRateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975872DAC2922E6E9C31B3D8 /* Pods_BurgeRateUITests.framework */; };
 		58D9F1FB22316F7B0037A514 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D9F1FA22316F7B0037A514 /* MyProfileViewController.swift */; };
+		7803242722329F5C00F845D4 /* ModelSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803242622329F5C00F845D4 /* ModelSql.swift */; };
+		7803242A2232A9C600F845D4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 780324282232A98400F845D4 /* libsqlite3.tbd */; };
+		7803242C2232ACC100F845D4 /* ReviewSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803242B2232ACC100F845D4 /* ReviewSql.swift */; };
 		785E4E5D21F00764006D2E1E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */; };
 		78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670221C7022E005EB320 /* AppDelegate.swift */; };
 		78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670421C7022E005EB320 /* EntryViewController.swift */; };
@@ -24,7 +27,6 @@
 		78F723E721EF926200505FB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723E621EF926200505FB5 /* User.swift */; };
 		78F723E921EF948E00505FB5 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723E821EF948E00505FB5 /* Review.swift */; };
 		78F723EB21EF97A900505FB5 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723EA21EF97A900505FB5 /* ModelFirebase.swift */; };
-		78F723ED21EF998C00505FB5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F723EC21EF998C00505FB5 /* libsqlite3.0.tbd */; };
 		78F723EF21EFAAEC00505FB5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F723EE21EFAAEC00505FB5 /* Model.swift */; };
 		78FCA6E82217CADC00D381EC /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FCA6E72217CADC00D381EC /* AddReviewViewController.swift */; };
 		AD8BD8F5BB0006D4483634A5 /* Pods_BurgeRate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92AB55DBB04490C4C344481 /* Pods_BurgeRate.framework */; };
@@ -56,6 +58,9 @@
 		44850A26394BF69A9B00F2EF /* Pods-BurgeRateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRateTests/Pods-BurgeRateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A9DCBC0EAA3B5CE9C1E83CA /* Pods-BurgeRate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgeRate.release.xcconfig"; path = "Pods/Target Support Files/Pods-BurgeRate/Pods-BurgeRate.release.xcconfig"; sourceTree = "<group>"; };
 		58D9F1FA22316F7B0037A514 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		7803242622329F5C00F845D4 /* ModelSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSql.swift; sourceTree = "<group>"; };
+		780324282232A98400F845D4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		7803242B2232ACC100F845D4 /* ReviewSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSql.swift; sourceTree = "<group>"; };
 		785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		78EC66FF21C7022E005EB320 /* BurgeRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgeRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78EC670221C7022E005EB320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78F723ED21EF998C00505FB5 /* libsqlite3.0.tbd in Frameworks */,
+				7803242A2232A9C600F845D4 /* libsqlite3.tbd in Frameworks */,
 				AD8BD8F5BB0006D4483634A5 /* Pods_BurgeRate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +136,7 @@
 		6E9FC069C433C694CB54A192 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				780324282232A98400F845D4 /* libsqlite3.tbd */,
 				78F723EC21EF998C00505FB5 /* libsqlite3.0.tbd */,
 				F92AB55DBB04490C4C344481 /* Pods_BurgeRate.framework */,
 				37956B4F01F6C4C16DB2D92D /* Pods_BurgeRateTests.framework */,
@@ -208,6 +214,8 @@
 				78F723E821EF948E00505FB5 /* Review.swift */,
 				78F723EA21EF97A900505FB5 /* ModelFirebase.swift */,
 				78F723EE21EFAAEC00505FB5 /* Model.swift */,
+				7803242622329F5C00F845D4 /* ModelSql.swift */,
+				7803242B2232ACC100F845D4 /* ReviewSql.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,6 +454,8 @@
 				785E4E5D21F00764006D2E1E /* ReviewTableViewCell.swift in Sources */,
 				78F723E921EF948E00505FB5 /* Review.swift in Sources */,
 				78F723EF21EFAAEC00505FB5 /* Model.swift in Sources */,
+				7803242C2232ACC100F845D4 /* ReviewSql.swift in Sources */,
+				7803242722329F5C00F845D4 /* ModelSql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BurgeRate.BurgeRate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BurgeRate/BurgeRate-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -656,6 +667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BurgeRate.BurgeRate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BurgeRate/BurgeRate-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

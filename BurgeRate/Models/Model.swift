@@ -16,11 +16,11 @@ class Model {
     var loggedInUser = User(_username: "", _password: "", _email: "", _gender: 0)
     var userId = ""
     
-    //var modelSql:ModelSql?
-    var modelFirebase = ModelFirebase();
+    var modelSql = ModelSql()
+    var modelFirebase = ModelFirebase()
     
     private init(){
-        //modelSql = ModelSql()
+        
     }
     
     func signin(email: String, password: String, callback:@escaping (Bool)->Void) {
@@ -46,36 +46,20 @@ class Model {
         modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
             let user = users[0]
             var newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
-            
-        })
-    }
 
-
-  /*  func getAllUsers() {
-        ModelFirebase.getAllStudents(callback: {(data:[User]) in
-            NotificationCenter.default.post(name: NSNotification.Name(self.usersListNotification),
-                                            object: self,
-                                            userInfo: ["data":data])
-            
         })
     }
     
-    func getAllStudents(callback:@escaping ([User])->Void){
-        ModelFirebase.getAllUsers(callback: callback);
-        //return Student.getAll(database: modelSql!.database);
-    }
-    */
-    
-    func addNewReview(review:Review){
+    func addNewReview(review:Review, callback:@escaping ()->Void){
         modelFirebase.addNewReview(review: review)
+        Review.addNew(database: modelSql.database , rv: review)
     }
     
     func getUser(byId:String) -> User? {
         return modelFirebase.getUser(byId: byId)
-        //return Student.get(database: modelSql!.database, byId: byId);
     }
     
-    func getAllReviews() {
+    func getAllReviews(callback:@escaping ()->Void) {
         modelFirebase.getAllReviews(callback: {(data:[Review]) in
             ModelNotification.ReviewListNotification.notify(data: data)
         })

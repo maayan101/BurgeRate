@@ -11,6 +11,7 @@ import UIKit
 
 class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imageToUpload:UIImage?
+    var vSpinner : UIView?
     
     @IBOutlet weak var rest: UITextField!
     @IBOutlet weak var date: UIDatePicker!
@@ -107,21 +108,12 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
         let user = Model.instance.loggedInUser
         let rv = Review(_rest: rest.text!, _user: user.Username, _rank: rate!.selectedSegmentIndex + 1, _caption: caption.text!, _url: url, _date: date.date)
         
-        Model.instance.addNewReview(review: rv)
-        self.popMsgSuccess()
-        self.clearForm()
-        
-        /*let tabBarController = self.tabBarController
-        _ = self.navigationController?.popViewController(animated: false)
-        tabBarController?.selectedIndex = 2
-        
-        if let tabBarController = self.presentingViewController as? UITabBarController
-        {
-            self.dismiss(animated: true){
-                tabBarController.selectedIndex = 2
-            }
-        }*/
-        //self.navigationController?.popViewController(animated: true)
+        vSpinner = self.showSpinner(onView: self.view)
+        Model.instance.addNewReview(review: rv){
+            self.popMsgSuccess()
+            self.removeSpinner(vSpinner: self.vSpinner!)
+            self.clearForm()
+        }
     }
     
     func clearForm(){
@@ -146,4 +138,28 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+extension UIViewController {
+
+    func showSpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    func removeSpinner(vSpinner : UIView) {
+        DispatchQueue.main.async {
+            vSpinner.removeFromSuperview()
+        }
+    }
 }
