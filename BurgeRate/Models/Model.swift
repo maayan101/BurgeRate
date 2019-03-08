@@ -42,11 +42,11 @@ class Model {
             })
     }
     
-    func updateUser(username: String, gender: Int) {
+    func updateUser(username: String, gender: Int, callback:@escaping (Bool)->Void) {
         modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
             let user = users[0]
-            var newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
-
+            let newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
+            return self.modelFirebase.updateUser(User: newUser, callback: callback)
         })
     }
     
@@ -156,4 +156,29 @@ class Model {
     }
 
 
+
+extension Date {
+    func toFirebase()->Double{
+        return self.timeIntervalSince1970 * 1000
+    }
+    
+    static func fromFirebase(_ interval:String)->Date{
+        return Date(timeIntervalSince1970: Double(interval)!)
+    }
+    
+    static func fromFirebase(_ interval:Double)->Date{
+        if (interval>9999999999){
+            return Date(timeIntervalSince1970: interval/1000)
+        } else {
+            return Date(timeIntervalSince1970: interval)
+        }
+    }
+    
+    var stringValue: String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.string(from: self)
+    }
+}
 

@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 class User{
     let Username:String
     let Email:String
     let Password:String
     let Gender:Int
+    var LastUpdate:Date?
     
     init(_username:String, _password:String, _email:String, _gender:Int) {
         Email = _email
@@ -20,12 +22,14 @@ class User{
         Gender = _gender
         Username = _username
     }
-    init(json:[String:Any]){
-        //UserID = json["id"] as! String
+    init(json:[String:Any]) {
         Email = json["email"] as! String
         Password = json["password"] as! String
         Gender = json["gender"] as! Int
         Username = json["username"] as! String
+        if let ts = json["lastUpdate"] as? Double{
+            self.LastUpdate = Date.fromFirebase(ts)
+        }
     }
     func toJson()-> [String:Any]{
         var json = [String:Any]()
@@ -34,6 +38,7 @@ class User{
         json["password"] = Password
         json["gender"] = Gender
         json["username"] = Username
+        json["lastUpdate"] = ServerValue.timestamp()
         return json
       }
    

@@ -41,8 +41,14 @@ class ModelFirebase {
         }
     }
     
-    func updateUser(user: User) -> Bool {
-        return true
+    func updateUser(User: User, callback:@escaping (Bool) -> Void) {
+        let email = User.Email
+        let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
+//        var updates = {}
+//        updates["/users/" + newEmail] = user.toJson()
+        self.ref.child("users").child(newEmail).setValue(User.toJson())
+        
+        callback(true)
     }
     /*
     func getCurrentUser(email:String, password:String, callback:@escaping (Bool)->Void) {
@@ -73,6 +79,7 @@ class ModelFirebase {
                 var email = User.Email
                 let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
                 self.ref.child("users").child(newEmail).setValue(User.toJson())
+                
                 callback(true)
             }
         }
