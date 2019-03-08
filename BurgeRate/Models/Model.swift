@@ -75,7 +75,7 @@ class Model {
         return modelFirebase.getUser(byId: byId)
     }
     
-    func getAllReviews(callback:@escaping ()->Void) {
+    func getAllReviews() {
         modelFirebase.getAllReviews(callback: { (data:[Review]) in
             ModelNotification.ReviewListNotification.notify(data: data)
             })

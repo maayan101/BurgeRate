@@ -22,17 +22,11 @@ class FeedTableViewController: UITableViewController {
             (data:Any) in
             self.data = data as! [Review]
             self.tableView.reloadData()
+            self.vSpinner?.removeFromSuperview()
         }
         
-     //   vSpinner = self.showSpinner(onView: self.view)
-        Model.instance.getAllReviews(){
-            if (self.data.count != 0){
-                self.removeSpinner(vSpinner: self.vSpinner!)
-            }
-            else{
-                self.popMsgFail()
-            }
-        }
+        vSpinner = self.showSpinner(onView: self.view)
+        Model.instance.getAllReviews()
     }
     
     deinit{
