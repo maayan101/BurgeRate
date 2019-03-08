@@ -24,9 +24,14 @@ class FeedTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-        vSpinner = self.showSpinner(onView: self.view)
-        Model.instance.getAllReviews(){ 
-            self.removeSpinner(vSpinner: self.vSpinner!)
+     //   vSpinner = self.showSpinner(onView: self.view)
+        Model.instance.getAllReviews(){
+            if (self.data.count != 0){
+                self.removeSpinner(vSpinner: self.vSpinner!)
+            }
+            else{
+                self.popMsgFail()
+            }
         }
     }
     
@@ -45,7 +50,12 @@ class FeedTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
+    func popMsgFail(){
+        let alert = UIAlertController(title: "Oops", message: "Guess Something's went wrong. So sorry :(", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "K Bye", style: .default) {_ in print("You Clicked OK")}
+        alert.addAction(okAction)
+        self.present(alert, animated : true, completion: nil)
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

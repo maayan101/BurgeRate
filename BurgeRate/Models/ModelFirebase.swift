@@ -105,6 +105,7 @@ class ModelFirebase {
         return isExists
     }
     */
+    
     func addNewReview(review:Review ,callback:@escaping (Bool)->Void){
         ref.child("reviews").childByAutoId().setValue(review.toJson()) { (error, ref) in
             if (error != nil){
@@ -120,8 +121,8 @@ class ModelFirebase {
     func getAllReviews(callback:@escaping ([Review])->Void){
         ref.child("reviews").observe(.value, with: {
             (snapshot) in
-            // Get review value
             var data = [Review]()
+            // Get review value
             let value = snapshot.value as! [String:Any]
             for (_, json) in value{
                 data.append(Review(json: json as! [String : Any]))
