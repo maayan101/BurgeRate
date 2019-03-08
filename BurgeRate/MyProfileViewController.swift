@@ -41,14 +41,13 @@ class MyProfileViewController: UIViewController {
         if validateUsername(username: UsernameUpdateText.text!) {
             Model.instance.updateUser(username: UsernameUpdateText.text!, gender: GenderUpdagteSeg.selectedSegmentIndex) { (success) in
                 if success {
-                    
                     let alertController = UIAlertController(title: "User Update", message:
                         "User updated successfully", preferredStyle: UIAlertController.Style.alert)
                     alertController.addAction(UIAlertAction(title: "Back", style: UIAlertAction.Style.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                     sleep(1)
-     
                     Model.instance.updateCurrentUser()
+                    sleep(1)
                     
                 } else {
                     let alertController = UIAlertController(title: "User Update", message:

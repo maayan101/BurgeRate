@@ -47,6 +47,7 @@ class ModelFirebase {
 //        var updates = {}
 //        updates["/users/" + newEmail] = user.toJson()
         self.ref.child("users").child(newEmail).setValue(User.toJson())
+        
         callback(true)
     }
     /*
@@ -78,6 +79,7 @@ class ModelFirebase {
                 var email = User.Email
                 let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
                 self.ref.child("users").child(newEmail).setValue(User.toJson())
+                
                 callback(true)
             }
         }
