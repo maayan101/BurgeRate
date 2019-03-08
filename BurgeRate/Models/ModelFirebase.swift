@@ -101,6 +101,9 @@ class ModelFirebase {
         return User(json: (ref.child("users").child(byId).value(forKey: byId) as? [String: Any])!)
     }
     
+    func getUser(byId2 :String) -> String?{
+        return  ref.child("users").child(byId2).value(forKey: "username") as? String
+    }
     
     /*
     func isExistsUserByUsername(username:String)->Bool{

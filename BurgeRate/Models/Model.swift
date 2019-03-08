@@ -71,9 +71,12 @@ class Model {
         
     }
     
-    func getUser(byId:String) -> User? {
-        return modelFirebase.getUser(byId: byId)
-    }
+    func getUser(byId:String, callback:@escaping (User?)->Void){
+        //return modelFirebase.getUser(byId: byId)
+        //return modelFirebase.getUser(byId2:byId)
+        modelFirebase.getUsersByEmail(email: byId, callback: {(users: [User]) in
+            callback(users[0])
+        })    }
     
     func getAllReviews() {
         modelFirebase.getAllReviews(callback: { (data:[Review]) in

@@ -70,7 +70,10 @@ class FeedTableViewController: UITableViewController {
         cell.Restaurant.text = rv.Restaurant
         let rank : String = String (describing : rv.Rank)
         cell.Stars.text = rank + "/5 Stars"
-        cell.User.text = "by " + rv.User
+        Model.instance.getUser(byId: rv.User.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)){(userByMail) in
+            cell.User.text = "by " + userByMail!.Email
+            }
+        
         cell.Caption.text = rv.Caption
         cell.imageView?.image = UIImage(named: "avatar")
         cell.imageView!.tag = indexPath.row
@@ -79,6 +82,9 @@ class FeedTableViewController: UITableViewController {
                 if (cell.imageView!.tag == indexPath.row){
                     if image != nil {
                         cell.imageView?.image = image!
+                        
+                        cell.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+                        //frame(forAlignmentRect: CGRect(x: 0, y: 0, width: 180, height: 180))
                     }
                 }
             }
@@ -86,6 +92,7 @@ class FeedTableViewController: UITableViewController {
         
         return cell
     }
+    
     
     /*
      // Override to support rearranging the table view.
