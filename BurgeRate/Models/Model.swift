@@ -42,13 +42,28 @@ class Model {
             })
     }
     
-    func updateUser(username: String, gender: Int, callback:@escaping (Bool)->Void) {
+    /*func updateUser(username: String, gender: Int, callback:@escaping (Bool)->Void) {
         modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
             let user = users[0]
             let newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
-            return self.modelFirebase.updateUser(User: newUser, callback: callback)
+            let cb = self.modelFirebase.updateUser(User: newUser, callback: callback)
+            //self.updateCurrentUser()
+            return cb
         })
+    }*/
+    
+    func updateUser(username: String, gender: Int, callback:@escaping (Bool)->Void) {
+        /*modelFirebase.getUsersByEmail(email: modelFirebase.getCurrentUserEmail()!, callback: {(users: [User]) in
+            let user = users[0]
+            let newUser = User(_username: username, _password: user.Password, _email: user.Email, _gender: gender)
+            let cb = self.modelFirebase.updateUser(User: newUser, callback: callback)
+            //self.updateCurrentUser()
+            return cb
+        })*/
+        
+        return modelFirebase.updateUserWork(email: loggedInUser.Email, password: loggedInUser.Password, username: username, gender: gender, callback: callback)
     }
+
     
     func addNewReview(review:Review, callback:@escaping (Bool)->Void){
         Review.addNew(database: modelSql.database , rv: review)
