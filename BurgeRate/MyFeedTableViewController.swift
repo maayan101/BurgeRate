@@ -1,8 +1,8 @@
 //
-//  FeedTableViewController.swift
+//  MyFeedTableViewController.swift
 //  BurgeRate
 //
-//  Created by Maayan Sidon on 30/01/2019.
+//  Created by MS-VM on 09/03/2019.
 //  Copyright © 2019 MS-VM. All rights reserved.
 //
 
@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 
-class FeedTableViewController: UITableViewController {
+class MyFeedTableViewController: UITableViewController {
     var data = [Review]()
     var ReviewListener:NSObjectProtocol?
     var vSpinner : UIView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +26,7 @@ class FeedTableViewController: UITableViewController {
         }
         
         vSpinner = self.showSpinner(onView: self.view)
-        Model.instance.getAllReviews()
+        Model.instance.getMyReviews()
     }
     
     deinit{
@@ -66,11 +66,12 @@ class FeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewTableViewCell
         
+      
         let rv = data[indexPath.row]
         cell.Restaurant.text = rv.Restaurant
         let rank : String = String (describing : rv.Rank)
         cell.Stars.text = rank + "/5 Stars"
-        Model.instance.getUser(byId: rv.User/*.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)*/){(userByMail) in
+        Model.instance.getUser(byId: rv.User){(userByMail) in
             if (userByMail != nil)
             {
                 cell.User.text = "by " + userByMail!.Username
@@ -92,8 +93,10 @@ class FeedTableViewController: UITableViewController {
                 }
             }
         }
-        
+        cell.Delete.setTitle("Delete", for: UIControl.State.normal)
+        cell.revId.text! = rv.RevID!
         return cell
     }
+
 }
 

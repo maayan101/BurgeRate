@@ -44,12 +44,8 @@ class ModelFirebase {
     func updateUser(User: User, callback:@escaping (Bool) -> Void) {
         let email = User.Email
         let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
-        //var updates = {}
-        //updates["/users/" + newEmail] = User.toJson()
         self.ref.child("users").child(newEmail).setValue(User.toJson())
-//        self.ref.child("users/" + newEmail + "/username").setValue(User.Username)
-//        self.ref.child("users/" + newEmail + "/gender").setValue(User.Gender)
-        
+ 
         callback(true)
     }
     
@@ -69,8 +65,6 @@ class ModelFirebase {
     
     func updateUserWork(email: String, password: String, username: String, gender: Int, callback:@escaping (Bool) -> Void) {
         let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
-        //self.ref.child("users/" + newEmail + "/username").setValue(username)
-        //self.ref.child("users/" + newEmail + "/gender").setValue(gender)
         let user = User(_username: username, _password: password, _email: email, _gender: gender)
         self.ref.child("users").child(newEmail).setValue(user.toJson())
         callback(true)
@@ -118,12 +112,44 @@ class ModelFirebase {
             var data = [Review]()
             // Get review value
             let value = snapshot.value as! [String:Any]
-            for (_, json) in value{
-                data.append(Review(json: json as! [String : Any]))
+            for (key, json) in value{
+                /*var newJson = [String:Any]()
+                newJson["restaurant"] = json["restaurant"]
+                newJson["user"] = json["user"]
+                newJson["rank"] = json["rank"]
+                newJson["caption"] = json["caption"]
+                newJson["url"] = json["url"]
+                newJson["date"] = json["date"]
+                newJson["key"] = key*/
+                let rv = Review(json: json as! [String : Any])
+                rv.addKey(key: key)
+                data.append(rv)
             }
             callback(data)
         })
      }
+    
+    func getMyReviews(byId: String, callback:@escaping ([Review])->Void){
+        ref.child("reviews").observe(.value, with: {
+            (snapshot) in
+            var data = [Review]()
+            // Get review value
+            let value = snapshot.value as! [String:Any]
+            for (key, json) in value{
+                let rv = Review(json: json as! [String : Any])
+                if (rv.User == byId){
+                    rv.addKey(key: key)
+                    data.append(rv)}
+            }
+            callback(data)
+        })
+    }
+    
+    func RemoveReview(key: String, callback:@escaping (Bool) -> Void)
+    {
+        ref.child("reviews").child(key).removeValue()
+        callback(true)
+    }
 
     func getAllUsers(callback:@escaping ([User])->Void){
         ref.child("users").observe(.value, with: {

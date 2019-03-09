@@ -53,17 +53,33 @@ class Model {
         
     }
     
+    func removeReview(revId:String, callback:@escaping (Bool) -> Void){
+        modelFirebase.RemoveReview(key: revId, callback: callback)
+    }
+    
     func getUser(byId:String, callback:@escaping (User?)->Void){
-        //return modelFirebase.getUser(byId: byId)
-        //return modelFirebase.getUser(byId2:byId)
         modelFirebase.getUsersByEmail(email: byId, callback: {(users: [User]) in
-            callback(users[0])
-        })    }
+            if users.count != 0
+            {
+                callback(users[0])
+            }
+            else
+            {
+                callback(nil)
+            }})
+    }
+        
     
     func getAllReviews() {
         modelFirebase.getAllReviews(callback: { (data:[Review]) in
             ModelNotification.ReviewListNotification.notify(data: data)
             })
+    }
+    
+    func getMyReviews(){
+        modelFirebase.getMyReviews(byId: Model.instance.loggedInUser.Email, callback: { (data:[Review]) in
+            ModelNotification.ReviewListNotification.notify(data: data)
+        })
     }
     
     func saveImage(image:UIImage, name:(String),callback:@escaping (String?)->Void){

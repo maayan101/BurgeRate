@@ -33,7 +33,6 @@ class User{
     }
     func toJson()-> [String:Any]{
         var json = [String:Any]()
-        //json["id"] = UserID
         json["email"] = Email
         json["password"] = Password
         json["gender"] = Gender

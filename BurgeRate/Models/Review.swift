@@ -14,6 +14,7 @@ class Review{
     let Caption:String
     let URL:String
     var Date:Date?
+    var RevID:String?
     
     init(_rest:String, _user:String, _rank:Int, _caption:String, _url:String, _date:Date) {
         Restaurant = _rest
@@ -22,7 +23,7 @@ class Review{
         Caption = _caption
         URL = _url
         Date = _date
-        
+        RevID = ""
     }
 
     init(json:[String:Any]){
@@ -32,6 +33,12 @@ class Review{
         Caption = json["caption"] as! String
         URL = json["url"] as! String
         Date = (json["date"] as! String).toDate(dateFormat: "dd-MM")
+        RevID = json["revId"] as? String
+    }
+    
+    func addKey(key : String) -> Void
+    {
+        self.RevID = key
     }
     
     func toJson()-> [String:Any]{

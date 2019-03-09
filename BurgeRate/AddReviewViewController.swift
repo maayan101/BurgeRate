@@ -123,6 +123,7 @@ class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate
         self.caption.text = ""
         self.rest.text = ""
         self.imageToUpload = nil
+        self.imageView.image = nil
         self.rate.selectedSegmentIndex = 0
         self.RestError.text = ""
         self.noImageError.text = ""

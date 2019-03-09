@@ -13,6 +13,7 @@
 		7803242722329F5C00F845D4 /* ModelSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803242622329F5C00F845D4 /* ModelSql.swift */; };
 		7803242A2232A9C600F845D4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 780324282232A98400F845D4 /* libsqlite3.tbd */; };
 		7803242C2232ACC100F845D4 /* ReviewSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803242B2232ACC100F845D4 /* ReviewSql.swift */; };
+		7803242E2233397000F845D4 /* MyFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803242D2233397000F845D4 /* MyFeedTableViewController.swift */; };
 		785E4E5D21F00764006D2E1E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */; };
 		78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670221C7022E005EB320 /* AppDelegate.swift */; };
 		78EC670521C7022E005EB320 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC670421C7022E005EB320 /* EntryViewController.swift */; };
@@ -61,6 +62,7 @@
 		7803242622329F5C00F845D4 /* ModelSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSql.swift; sourceTree = "<group>"; };
 		780324282232A98400F845D4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		7803242B2232ACC100F845D4 /* ReviewSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSql.swift; sourceTree = "<group>"; };
+		7803242D2233397000F845D4 /* MyFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFeedTableViewController.swift; sourceTree = "<group>"; };
 		785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		78EC66FF21C7022E005EB320 /* BurgeRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgeRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78EC670221C7022E005EB320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				785E4E5C21F00764006D2E1E /* ReviewTableViewCell.swift */,
 				78FCA6E72217CADC00D381EC /* AddReviewViewController.swift */,
 				58D9F1FA22316F7B0037A514 /* MyProfileViewController.swift */,
+				7803242D2233397000F845D4 /* MyFeedTableViewController.swift */,
 			);
 			path = BurgeRate;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				78EC673321C72028005EB320 /* SignUpViewController.swift in Sources */,
 				172D1AA12202075100330357 /* FeedTableViewController.swift in Sources */,
 				58D9F1FB22316F7B0037A514 /* MyProfileViewController.swift in Sources */,
+				7803242E2233397000F845D4 /* MyFeedTableViewController.swift in Sources */,
 				78F723E721EF926200505FB5 /* User.swift in Sources */,
 				78EC670321C7022E005EB320 /* AppDelegate.swift in Sources */,
 				785E4E5D21F00764006D2E1E /* ReviewTableViewCell.swift in Sources */,
