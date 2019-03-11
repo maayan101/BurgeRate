@@ -45,9 +45,9 @@ class MyProfileViewController: UIViewController {
                         "User updated successfully", preferredStyle: UIAlertController.Style.alert)
                     alertController.addAction(UIAlertAction(title: "Back", style: UIAlertAction.Style.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
-                    sleep(1)
+                    //sleep(1)
                     Model.instance.updateCurrentUser()
-                    sleep(1)
+                    //sleep(1)
                     
                 } else {
                     let alertController = UIAlertController(title: "User Update", message:
@@ -55,7 +55,9 @@ class MyProfileViewController: UIViewController {
                     alertController.addAction(UIAlertAction(title: "Back", style: UIAlertAction.Style.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
+                
             }
+           // Model.instance.updateCurrentUser()
         }
     }
     @IBAction func LogOutUser(_ sender: Any) {
@@ -74,11 +76,11 @@ class MyProfileViewController: UIViewController {
         }
     }
     
-    deinit{
+    //deinit{
 //        if ReviewListener != nil{
 //            ModelNotification.ReviewListNotification.remove(observer: ReviewListener!)
 //        }
-    }
+    //}
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,11 +90,4 @@ class MyProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - Table view data source
-    
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-    
 }

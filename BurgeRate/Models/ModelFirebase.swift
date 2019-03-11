@@ -46,7 +46,9 @@ class ModelFirebase {
         let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
 //        var updates = {}
 //        updates["/users/" + newEmail] = user.toJson()
-        self.ref.child("users").child(newEmail).setValue(User.toJson())
+//        self.ref.child("users").child(newEmail).setValue(User.toJson())
+        self.ref.child("users/" + newEmail + "/username").setValue(User.Username)
+        self.ref.child("users/" + newEmail + "/gender").setValue(User.Gender)
         
         callback(true)
     }
@@ -76,15 +78,24 @@ class ModelFirebase {
             if error != nil {
                 callback(false)
             } else {
-                var email = User.Email
+                let email = User.Email
                 let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
                 self.ref.child("users").child(newEmail).setValue(User.toJson())
                 
                 callback(true)
             }
         }
-        
     }
+    
+    func updateUserWork(email: String, password: String, username: String, gender: Int, callback:@escaping (Bool) -> Void) {
+        let newEmail = email.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
+        //self.ref.child("users/" + newEmail + "/username").setValue(username)
+        //self.ref.child("users/" + newEmail + "/gender").setValue(gender)
+        let user = User(_username: username, _password: password, _email: email, _gender: gender)
+        self.ref.child("users").child(newEmail).setValue(user.toJson())
+        callback(true)
+    }
+
     
     func getUser(byId:String) -> User?{
         return User(json: (ref.child("users").child(byId).value(forKey: byId) as? [String: Any])!)
