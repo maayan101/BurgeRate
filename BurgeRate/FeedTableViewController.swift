@@ -69,16 +69,16 @@ class FeedTableViewController: UITableViewController {
         let rv = data[indexPath.row]
         cell.Restaurant.text = rv.Restaurant
         let rank : String = String (describing : rv.Rank)
-        cell.Stars.text = rank + "/5 Stars"
+        cell.Stars.text = rank + " /5 Stars"
         cell.User.text = "by " + rv.User
         cell.Caption.text = rv.Caption
-        cell.imageView?.image = UIImage(named: "avatar")
-        cell.imageView!.tag = indexPath.row
+        cell.url.image = UIImage(named: "avatar")
+        cell.url.tag = indexPath.row
         if rv.URL != "" {
             Model.instance.getImage(url: rv.URL) { (image:UIImage?) in
-                if (cell.imageView!.tag == indexPath.row){
+                if (cell.url.tag == indexPath.row){
                     if image != nil {
-                        cell.imageView?.image = image!
+                        cell.url.image = image!
                     }
                 }
             }
