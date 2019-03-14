@@ -18,7 +18,7 @@ class MyFeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ReviewListener = ModelNotification.ReviewListNotification.observe(){
+        ReviewListener = ModelNotification.MyReviewListNotification.observe(){
             (data:Any) in
             self.data = data as! [Review]
             self.tableView.reloadData()
@@ -31,7 +31,7 @@ class MyFeedTableViewController: UITableViewController {
     
     deinit{
         if ReviewListener != nil{
-            ModelNotification.ReviewListNotification.remove(observer: ReviewListener!)
+            ModelNotification.MyReviewListNotification.remove(observer: ReviewListener!)
         }
     }
     

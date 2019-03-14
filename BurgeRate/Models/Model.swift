@@ -13,6 +13,7 @@ class Model {
     static let instance:Model = Model()
     
     let reviewsListNotification = ""
+    let myReviewsListNotification = ""
     var loggedInUser = User(_username: "", _password: "", _email: "", _gender: 0)
     var userId = ""
     
@@ -132,7 +133,9 @@ class Model {
 }
     class ModelNotification{
         static let ReviewListNotification = MyNotification<[Review]>(_name: "com.BurgeRate.reviewlist")
+        static let MyReviewListNotification = MyNotification<[Review]>(_name: "com.BurgeRate.myreviewlist")
         
+
         class MyNotification<T>{
             let name:String
             init(_name:String) {
@@ -140,6 +143,33 @@ class Model {
             }
             func observe(cb:@escaping (T)->Void)-> NSObjectProtocol{
 
+                return NotificationCenter.default.addObserver(forName: NSNotification.Name(name),
+                                                              object: nil, queue: nil) { (data) in
+                                                                if let data = data.userInfo?["data"] as? T {
+                                                                    cb(data)
+                                                                }
+                }
+            }
+            
+            func notify(data:T){
+                NotificationCenter.default.post(name: NSNotification.Name(name),
+                                                object: self,
+                                                userInfo: ["data":data])
+            }
+            
+            func remove(observer: NSObjectProtocol){
+                NotificationCenter.default.removeObserver(observer, name: nil, object: nil)
+            }
+            
+            
+        }
+        class MyReviewNotification<T>{
+            let name:String
+            init(_name:String) {
+                name = _name
+            }
+            func observe(cb:@escaping (T)->Void)-> NSObjectProtocol{
+                
                 return NotificationCenter.default.addObserver(forName: NSNotification.Name(name),
                                                               object: nil, queue: nil) { (data) in
                                                                 if let data = data.userInfo?["data"] as? T {
